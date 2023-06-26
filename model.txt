@@ -1,0 +1,24 @@
+
+
+# User모델 생성
+npx sequelize model:generate --name Users --attributes email:string,name:string,password:string
+
+# PlaceCategory모델 생성
+npx sequelize model:generate --name PlaceCategories --attributes name:string
+
+# Place모델 생성
+npx sequelize model:generate --name Places --attributes userId:integer,placeId:integer
+
+# PlaceInfo모델 생성
+npx sequelize model:generate --name PlaceInfos --attributes name:string,address:string,phoneNumber:string,foodType:string,priceRange:string,openingHours:string,star:number,placeId:integer
+
+# Menu모델 생성
+npx sequelize model:generate --name Menus --attributes name:string,price:string,placeInfoId:integer
+
+# Review모델 생성
+npx sequelize model:generate --name Reviews --attributes content:string,rating:number,userId:integer,placeId:integer
+
+# Like모델 생성
+npx sequelize model:generate --name Likes --attributes userId:integer,placeId:integer
+
+
