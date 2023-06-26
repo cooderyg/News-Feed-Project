@@ -21,4 +21,6 @@ npx sequelize model:generate --name Reviews --attributes content:string,rating:n
 # Like모델 생성
 npx sequelize model:generate --name Likes --attributes userId:integer,placeId:integer
 
+# Like모델 생성
+npx sequelize model:generate --name ReviewImages --attributes ReviewId:integer,imageUrl:string
 
