@@ -9,6 +9,38 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      name: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      address: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      phoneNumber: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
+      foodType: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      priceRange: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      openingHours: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      imageUrl: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      star: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
