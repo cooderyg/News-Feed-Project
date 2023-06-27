@@ -1,5 +1,7 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class PlaceInfos extends Model {
     /**
@@ -9,75 +11,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.Places, {
-        targetKey: "placeId",
-        foreignKey: "PlaceId",
-      });
-      this.hasMany(models.Menus, {
-        sourceKey: "placeInfoId",
-        foreignKey: "PlaceInfoId",
-      });
     }
   }
-  PlaceInfos.init(
-    {
-      placeInfoId: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: DataTypes.INTEGER,
-      },
-      PlaceId: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-      },
-      name: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      address: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      phoneNumber: {
-        allowNull: true,
-        type: DataTypes.STRING,
-      },
-      foodType: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      priceRange: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      openingHours: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      imageUrl: {
-        allowNull: false,
-        type: DataTypes.STRING,
-      },
-      star: {
-        allowNull: true,
-        type: DataTypes.INTEGER,
-      },
-      createdAt: {
-        allowNull: false, // NOT NULL
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-      },
-      updatedAt: {
-        allowNull: false, // NOT NULL
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-      },
-    },
-    {
-      sequelize,
-      modelName: "PlaceInfos",
-    }
-  );
+  PlaceInfos.init({
+    name: DataTypes.STRING,
+    address: DataTypes.STRING,
+    phoneNumber: DataTypes.STRING,
+    foodType: DataTypes.STRING,
+    priceRange: DataTypes.STRING,
+    openingHours: DataTypes.STRING,
+    star: DataTypes.NUMBER,
+    placeId: DataTypes.INTEGER
+  }, {
+    sequelize,
+    modelName: 'PlaceInfos',
+  });
   return PlaceInfos;
 };

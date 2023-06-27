@@ -1,8 +1,8 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { PlaceCategories } = require("../models");
+const { PlaceCategories } = require('../models');
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   const { name } = req.body;
 
   try {
@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const placeCategories = await PlaceCategories.findAll({});
     res.status(200).json({ data: placeCategories });
