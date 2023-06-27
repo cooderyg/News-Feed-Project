@@ -8,6 +8,7 @@ const placesRouter = require("./places.route");
 const reviewsRouter = require("./reviews.route");
 const usersRouter = require("./users.route");
 const reviewImagesRouter = require("./reviewImages.route");
+const filesRouter = require("./files.route");
 
 const defaultRoutes = [
   {
@@ -41,6 +42,10 @@ const defaultRoutes = [
   {
     path: "/reviewImages",
     route: reviewImagesRouter,
+  },
+  {
+    path: "/files",
+    route: filesRouter,
   },
 ];
 
