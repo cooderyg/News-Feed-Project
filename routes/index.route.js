@@ -3,7 +3,6 @@ const router = express.Router();
 const likesRouter = require("./likes.route");
 const menusRouter = require("./menus.route");
 const placeCategoriesRouter = require("./placeCategories.route");
-const placeInfosRouter = require("./placeInfos.route");
 const placesRouter = require("./places.route");
 const reviewsRouter = require("./reviews.route");
 const usersRouter = require("./users.route");
