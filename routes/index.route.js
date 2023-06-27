@@ -24,10 +24,6 @@ const defaultRoutes = [
     route: placeCategoriesRouter,
   },
   {
-    path: "/placeInfos",
-    route: placeInfosRouter,
-  },
-  {
     path: "/places",
     route: placesRouter,
   },

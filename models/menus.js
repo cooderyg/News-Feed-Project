@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.PlaceInfos, {
-        targetKey: "placeInfoId",
-        foreignKey: "PlaceInfoId",
+      this.belongsTo(models.Places, {
+        targetKey: "placeId",
+        foreignKey: "PlaceId",
       });
     }
   }
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      PlaceInfoId: {
+      PlaceId: {
         allowNull: false,
         type: DataTypes.INTEGER,
       },

@@ -13,19 +13,15 @@ module.exports = (sequelize, DataTypes) => {
         targetKey: "placeCategoryId",
         foreignKey: "PlaceCategoryId",
       });
-      this.belongsTo(models.Users, {
-        targetKey: "userId",
-        foreignKey: "UserId",
-      });
-      this.hasOne(models.PlaceInfos, {
-        sourceKey: "placeId",
-        foreignKey: "PlaceId",
-      });
       this.hasMany(models.Likes, {
         sourceKey: "placeId",
         foreignKey: "PlaceId",
       });
       this.hasMany(models.Reviews, {
+        sourceKey: "placeId",
+        foreignKey: "PlaceId",
+      });
+      this.hasMany(models.Menus, {
         sourceKey: "placeId",
         foreignKey: "PlaceId",
       });
@@ -43,8 +39,36 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.INTEGER,
       },
-      UserId: {
+      name: {
         allowNull: false,
+        type: DataTypes.STRING,
+      },
+      address: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      phoneNumber: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
+      foodType: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      priceRange: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      openingHours: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      imageUrl: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      star: {
+        allowNull: true,
         type: DataTypes.INTEGER,
       },
       createdAt: {
