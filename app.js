@@ -4,13 +4,14 @@ const express = require('express');
 const session = require('express-session');
 const MemoryStore = require('memorystore')(session);
 const router = require('./routes/index.route.js');
+const cookieParser = require('cookie-parser');
 const { SESSION_SECRET_KEY } = process.env;
-
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(
   session({
     secret: SESSION_SECRET_KEY,

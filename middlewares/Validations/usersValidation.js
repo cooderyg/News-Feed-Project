@@ -2,7 +2,7 @@ const Joi = require('joi');
 const { user } = require('./message.json');
 
 const userValidation = {
-  signin: async (req, res, next) => {
+  signInValidation: async (req, res, next) => {
     const body = req.body;
     const schema = Joi.object().keys({
       email: Joi.string()
