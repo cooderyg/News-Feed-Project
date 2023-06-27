@@ -11,15 +11,47 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.Places, {
+        targetKey: "placeId",
+        foreignKey: "PlaceId",
+      });
     }
   }
-  Menus.init({
-    name: DataTypes.STRING,
-    price: DataTypes.STRING,
-    placeInfoId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Menus',
-  });
+  Menus.init(
+    {
+      menuId: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
+      PlaceId: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+      },
+      name: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      price: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
+      createdAt: {
+        allowNull: false, // NOT NULL
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        allowNull: false, // NOT NULL
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
+    },
+    {
+      sequelize,
+      modelName: "Menus",
+    }
+  );
   return Menus;
 };

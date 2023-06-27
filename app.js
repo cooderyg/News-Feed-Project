@@ -6,6 +6,7 @@ const MemoryStore = require('memorystore')(session);
 const router = require('./routes/index.route.js');
 const { SESSION_SECRET_KEY } = process.env;
 
+
 const app = express();
 const PORT = 3000;
 
