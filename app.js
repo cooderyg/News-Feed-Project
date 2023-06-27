@@ -8,7 +8,6 @@ const { SESSION_SECRET_KEY } = process.env;
 
 const app = express();
 const PORT = 3000;
-//test
 
 app.use(express.json());
 app.use(
