@@ -4,11 +4,9 @@ const express = require('express');
 const session = require('express-session');
 const MemoryStore = require('memorystore')(session);
 const router = require('./routes/index.route.js');
+const viewRouter = require('./views/router');
 const { SESSION_SECRET_KEY } = process.env;
 
-const express = require('express');
-const router = require('./routes/index.route.js');
-const viewRouter = require('./views/router');
 const app = express();
 const PORT = 3000;
 app.use(express.json());
