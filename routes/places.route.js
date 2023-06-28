@@ -165,4 +165,13 @@ router.delete('/:placeId', async (req, res) => {
   }
 });
 
+router.get('/main/best12', async (req, res) => {
+  try {
+    res.status(201).json(await Places.findAll({ order: [['star', 'DESC']], limit: 12 }));
+  } catch (err) {
+    console.error(err);
+    res.status(412).json({ message: '오류가 발생하였습니다.' });
+  }
+});
+
 module.exports = router;
