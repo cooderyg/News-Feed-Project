@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("ReviewImages", {
+    await queryInterface.createTable('ReviewImages', {
       reviewImageId: {
         allowNull: false,
         autoIncrement: true,
@@ -13,10 +13,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: "Reviews",
-          key: "reviewId",
+          model: 'Reviews',
+          key: 'reviewId',
         },
-        onDelete: "CASCADE",
+        onDelete: 'CASCADE',
       },
       imageUrl: {
         allowNull: false,
@@ -25,16 +25,16 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("now"),
+        defaultValue: Sequelize.fn('now'),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("now"),
+        defaultValue: Sequelize.fn('now'),
       },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("ReviewImages");
+    await queryInterface.dropTable('ReviewImages');
   },
 };

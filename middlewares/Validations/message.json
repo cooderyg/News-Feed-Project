@@ -1,0 +1,25 @@
+{
+  "user": {
+    "email": {
+      "string.base": "이메일은 문자열이어야 합니다.",
+      "any.required": "이메일을 입력해 주세요.",
+      "string.pattern.base": "이메일 형식이 올바르지 않습니다.",
+      "string.max": "이메일은 최대 30자 이내로 입력해 주세요.",
+      "string.empty": "이메일을 입력해 주세요."
+    },
+    "password": {
+      "string.base": "패스워드는 문자열이어야 합니다.",
+      "any.required": "패스워드를 입력해 주세요.",
+      "string.pattern.base": "패스워드 형식이 올바르지 않습니다.",
+      "string.min": "패스워드는 최소 8자 이상 입력해 주세요.",
+      "string.max": "패스워드는 최대 20자 이내로 입력해 주세요.",
+      "string.empty": "패스워드를 입력해 주세요."
+    },
+    "name": {
+      "string.base": "이름은 문자열이어야 합니다.",
+      "any.required": "이름을 입력해 주세요.",
+      "string.pattern.base": "이름 형식이 올바르지 않습니다.",
+      "string.empty": "이름을 입력해 주세요."
+    }
+  }
+}

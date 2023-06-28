@@ -1,45 +1,45 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const likesRouter = require("./likes.route");
-const menusRouter = require("./menus.route");
-const placeCategoriesRouter = require("./placeCategories.route");
-const placesRouter = require("./places.route");
-const reviewsRouter = require("./reviews.route");
-const usersRouter = require("./users.route");
-const reviewImagesRouter = require("./reviewImages.route");
-const filesRouter = require("./files.route");
+const likesRouter = require('./likes.route');
+const menusRouter = require('./menus.route');
+const placeCategoriesRouter = require('./placeCategories.route');
+const placesRouter = require('./places.route');
+const reviewsRouter = require('./reviews.route');
+const usersRouter = require('./users.route');
+const reviewImagesRouter = require('./reviewImages.route');
+const filesRouter = require('./files.route');
 
 const defaultRoutes = [
   {
-    path: "/likes",
+    path: '/likes',
     route: likesRouter,
   },
   {
-    path: "/menus",
+    path: '/menus',
     route: menusRouter,
   },
   {
-    path: "/placeCategories",
+    path: '/placeCategories',
     route: placeCategoriesRouter,
   },
   {
-    path: "/places",
+    path: '/places',
     route: placesRouter,
   },
   {
-    path: "/reviews",
+    path: '/reviews',
     route: reviewsRouter,
   },
   {
-    path: "/users",
+    path: '/users',
     route: usersRouter,
   },
   {
-    path: "/reviewImages",
+    path: '/reviewImages',
     route: reviewImagesRouter,
   },
   {
-    path: "/files",
+    path: '/files',
     route: filesRouter,
   },
 ];
