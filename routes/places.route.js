@@ -33,22 +33,19 @@ router.post('/:placeCategoryId', async (req, res) => {
     res.status(500).json({ message: error });
   }
 });
-// 맛집 전체 조회  API
 
-// router.get("/", async (req, res) => {
-//   try {
-//     const places = await Places.findAll({});
-//     res.status(200).json({ data: places, menu });
-//   } catch (error) {
-//     res.status(500).json({ message: error });
-//   }
-// });
-// 맛집 전체 조회  API ok
+const itemsPerPage = 10; // 페이지 당 항목 수
+// 맛집 전체 조회
 router.get('/', async (req, res) => {
-  const { placeCategoryId } = req.params;
+  const { page } = req.query;
+  const pageNum = parseInt(page) || 1;
+  const offset = (pageNum - 1) * itemsPerPage;
+  const limit = itemsPerPage;
+
   try {
     const places = await Places.findAll({
-      // where: { PlaceCategoryId: placeCategoryId },
+      limit,
+      offset,
       include: [
         {
           model: Menus,
@@ -61,13 +58,19 @@ router.get('/', async (req, res) => {
     res.status(500).json({ message: error });
   }
 });
-
-//카테고리_ID 만 가지고 조회
+// categoryId로만 특정 검색
 router.get('/category/:placeCategoryId', async (req, res) => {
   const { placeCategoryId } = req.params;
+  const { page } = req.query;
+  const pageNum = parseInt(page) || 1;
+  const offset = (pageNum - 1) * itemsPerPage;
+  const limit = itemsPerPage;
+
   try {
     const places = await Places.findAll({
       where: { PlaceCategoryId: placeCategoryId },
+      limit,
+      offset,
       include: [
         {
           model: Menus,
