@@ -1,0 +1,80 @@
+header {
+  margin: 108px auto 60px;
+}
+
+header a {
+  display: block;
+  width: 167px;
+  margin: 0 auto;
+}
+
+.login-form {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px;
+  border-radius: 20px;
+  margin: 0 auto;
+  max-width: 700px;
+  width: 100%;
+}
+
+.login-form h2 {
+  color: #ff2e00;
+  margin-top: 40px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.login-form .form-container {
+  margin: 0 auto;
+  max-width: 500px;
+  width: 100%;
+}
+
+.login-form .input-wrapper {
+  position: relative;
+  margin-top: 60px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 100px;
+}
+
+.login-form input {
+  margin-left: 20px;
+  width: 80%;
+  height: 40px;
+  outline: none;
+  border: none;
+}
+
+.login-form label {
+  position: absolute;
+  top: 4px;
+  left: -40px;
+  font-size: 32px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.login-form button {
+  width: 100%;
+  margin: 40px 0 60px;
+  height: 50px;
+  border-radius: 100px;
+  background-color: #ff2e00;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #ce3513;
+}
+
+.sign-up {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  color: #ff2e00;
+  margin-top: 20px;
+}

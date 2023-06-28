@@ -2,16 +2,18 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.render('index');
+  if (req.session.user) return res.render('index', { ...req.session.user, login: 1 });
+  return res.render('index', { login: 0 });
 });
 router.get('/category', (req, res) => {
   res.render('category');
 });
 router.get('/detail', (req, res) => {
-  res.render('detail');
+  if (req.session.user) return res.render('detail', { ...req.session.user, login: 1 });
+  return res.render('detail', { login: 0 });
 });
 router.get('/login', (req, res) => {
-  res.render('login');
+  res.render('login', { title: '심재두' });
 });
 router.get('/sign-up', (req, res) => {
   res.render('sign-up');

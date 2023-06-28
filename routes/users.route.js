@@ -29,7 +29,7 @@ router.post('/signin', signInValidation, async (req, res) => {
 router.get('/signout', (req, res) => {
   req.session.destroy((err) => {
     if (err) return res.status(412).json({ message: '오류가 발생하였습니다.' });
-    return res.status(201).json({ message: '로그아웃 성공' });
+    return res.status(201).redirect('../../');
   });
 });
 
