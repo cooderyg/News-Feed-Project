@@ -33,16 +33,18 @@ header a {
 .login-form .input-wrapper {
   position: relative;
   margin-top: 60px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 100px;
+  max-width: 500px;
+  width: 100%;
 }
 
 .login-form input {
-  margin-left: 20px;
-  width: 80%;
+  max-width: 500px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 100px;
+  padding-left: 20px;
   height: 40px;
-  outline: none;
-  border: none;
+  box-sizing: border-box;
 }
 
 .login-form label {
