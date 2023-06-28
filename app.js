@@ -6,9 +6,11 @@ const MemoryStore = require('memorystore')(session);
 const router = require('./routes/index.route.js');
 const { SESSION_SECRET_KEY } = process.env;
 
+const express = require('express');
+const router = require('./routes/index.route.js');
+const viewRouter = require('./views/router');
 const app = express();
 const PORT = 3000;
-
 app.use(express.json());
 app.use(
   session({
@@ -22,6 +24,12 @@ app.use(
     },
   })
 );
+
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.use(express.static(__dirname + '/views/static'));
+
+app.use('/', viewRouter);
 
 app.use('/api', router);
 
