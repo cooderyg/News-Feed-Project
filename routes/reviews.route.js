@@ -34,7 +34,7 @@ router.post("/:placeId", authMiddleware, async (req, res) => {
     .json({ message: "리뷰 작성에 성공하였습니다.", data: review });
 });
 
-// 해당 맛집게시글의 리뷰 전체 목록 조회
+// 해당 리뷰 전체 목록 조회
 router.get("/", async (req, res) => {
   const reviews = await Reviews.findAll({
     attributes: [
