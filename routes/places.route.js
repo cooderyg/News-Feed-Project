@@ -34,13 +34,13 @@ router.post('/:placeCategoryId', async (req, res) => {
   }
 });
 
-const itemsPerPage = 10; // 페이지 당 항목 수
+const placePerPage = 20; // 페이지 당 항목 수
 // 맛집 전체 조회
 router.get('/', async (req, res) => {
   const { page } = req.query;
   const pageNum = parseInt(page) || 1;
-  const offset = (pageNum - 1) * itemsPerPage;
-  const limit = itemsPerPage;
+  const offset = (pageNum - 1) * placePerPage;
+  const limit = placePerPage;
 
   try {
     const places = await Places.findAll({
