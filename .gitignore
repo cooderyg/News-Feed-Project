@@ -3,3 +3,4 @@ config
 s3.json
 node_modules
 package-lock.json
+.DS_Store

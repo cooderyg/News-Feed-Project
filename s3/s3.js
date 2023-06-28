@@ -1,13 +1,13 @@
-const multer = require("multer");
-const multer_s3 = require("multer-s3");
-const aws = require("aws-sdk");
-require("dotenv").config();
+// const multer = require("multer");
+// const multer_s3 = require("multer-s3");
+// const aws = require("aws-sdk");
+// require("dotenv").config();
 
-const s3 = new aws.S3({
-  accessKeyId: process.env.S3_ACCESS_KEY,
-  secretAccessKey: process.env.S3_SECRET_KEY,
-  region: process.env.S3_BUCKET_REGION,
-});
+// const s3 = new aws.S3({
+//   accessKeyId: process.env.S3_ACCESS_KEY,
+//   secretAccessKey: process.env.S3_SECRET_KEY,
+//   region: process.env.S3_BUCKET_REGION,
+// });
 
 const storage = multer_s3({
   s3: s3,
@@ -19,8 +19,8 @@ const storage = multer_s3({
   },
 });
 
-const upload = multer({
-  storage: storage, // storage를 multer_s3 객체로 지정
-});
+// const upload = multer({
+//   storage: storage, // storage를 multer_s3 객체로 지정
+// });
 
-module.exports = upload;
+// module.exports = upload;
