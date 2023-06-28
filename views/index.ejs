@@ -18,30 +18,22 @@
 <body>
   <%- include('includes/header') %>
     <main>
-      <section class="search wrap">
-        <div class="search-container">
-          <h2 class="title">오늘 뭐먹지?</h2>
-          <div class="input-container">
-            <input placeholder="지역, 가격, 음식명 검색" type="text" />
-            <i class="fa fa-search" aria-hidden="true"></i>
-          </div>
-        </div>
-      </section>
-      <section class="category wrap">
-        <div class="swiper-container">
-          <div class="swiper-wrapper" id="categoriesList">
+      <%- include('includes/searchbox') %>
+        <section class="category wrap">
+          <div class="swiper-container">
+            <div class="swiper-wrapper" id="categoriesList">
 
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
           </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
-      </section>
-      <section class="feed wrap">
-        <h2 class="title">핫한 맛집</h2>
-        <ul class="feed-container" id="best12list">
+        </section>
+        <section class="feed wrap">
+          <h2 class="title">핫한 맛집</h2>
+          <ul class="feed-container" id="best12list">
 
-        </ul>
-      </section>
+          </ul>
+        </section>
     </main>
     <footer>
       <address>&copy nbc node B group8</address>

@@ -156,6 +156,10 @@ h1 > a {
   margin-top: 8px;
   color: #222;
 }
+
+.searchBtn {
+  cursor: pointer;
+}
 /* footer */
 footer {
   display: flex;
