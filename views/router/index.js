@@ -13,7 +13,7 @@ router.get('/detail', (req, res) => {
   return res.render('detail', { login: 0 });
 });
 router.get('/login', (req, res) => {
-  res.render('login', { title: '심재두' });
+  res.render('login');
 });
 router.get('/sign-up', (req, res) => {
   res.render('sign-up');
