@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="/js/signup.js" defer></script>
     <style>
       header {
         margin: 108px auto 60px;
@@ -78,24 +79,28 @@
     <header>
       <a href="/"><img src="https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687925494581-logo-auth.png" alt="" /></a>
     </header>
-    <form class="login-form">
+    <div class="login-form">
       <h2>회원가입</h2>
       <div class="form-container">
         <div class="input-wrapper">
           <label>이메일</label>
-          <input type="text" placeholder="이메일을 입력해주세요." />
+          <input type="email" id="userEmail" placeholder="이메일을 입력해주세요." />
+        </div>
+        <div class="input-wrapper">
+          <label>이름</label>
+          <input type="text" id="userName" placeholder="이름을 입력해주세요." />
         </div>
         <div class="input-wrapper">
           <label>비밀번호</label>
-          <input type="password" placeholder="비밀번호를 입력해주세요." />
+          <input type="password" id="userPassword" placeholder="비밀번호를 입력해주세요." />
         </div>
         <div class="input-wrapper">
           <label>확인비밀번호</label>
-          <input type="password" placeholder="확인비밀번호를 입력해주세요." />
+          <input type="password" id="userConfirmPassword" placeholder="확인비밀번호를 입력해주세요." />
         </div>
-        <button>회원가입</button>
+        <button id="signUpBtn">회원가입</button>
       </div>
-    </form>
+    </div>
     <a href="/signIn"></a>
   </body>
 </html>
