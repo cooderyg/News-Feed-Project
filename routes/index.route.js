@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const likesRouter = require("./likes.route");
-const menusRouter = require("./menus.route");
-const placeCategoriesRouter = require("./placeCategories.route");
-const placesRouter = require("./places.route");
-const reviewsRouter = require("./reviews.route");
-const usersRouter = require("./users.route");
-const reviewImagesRouter = require("./reviewImages.route");
-const filesRouter = require("./files.route");
+const likesRouter = require('./likes.route');
+const menusRouter = require('./menus.route');
+const placeCategoriesRouter = require('./placeCategories.route');
+const placesRouter = require('./places.route');
+const reviewsRouter = require('./reviews.route');
+const usersRouter = require('./users.route');
+const reviewImagesRouter = require('./reviewImages.route');
+const filesRouter = require('./files.route');
 
 const defaultRoutes = [
   {

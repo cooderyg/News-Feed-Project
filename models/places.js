@@ -1,5 +1,5 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Places extends Model {
     /**
@@ -10,20 +10,20 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       this.belongsTo(models.PlaceCategories, {
-        targetKey: "placeCategoryId",
-        foreignKey: "PlaceCategoryId",
+        targetKey: 'placeCategoryId',
+        foreignKey: 'PlaceCategoryId',
       });
       this.hasMany(models.Likes, {
-        sourceKey: "placeId",
-        foreignKey: "PlaceId",
+        sourceKey: 'placeId',
+        foreignKey: 'PlaceId',
       });
       this.hasMany(models.Reviews, {
-        sourceKey: "placeId",
-        foreignKey: "PlaceId",
+        sourceKey: 'placeId',
+        foreignKey: 'PlaceId',
       });
       this.hasMany(models.Menus, {
-        sourceKey: "placeId",
-        foreignKey: "PlaceId",
+        sourceKey: 'placeId',
+        foreignKey: 'PlaceId',
       });
     }
   }
@@ -84,7 +84,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "Places",
+      modelName: 'Places',
     }
   );
   return Places;

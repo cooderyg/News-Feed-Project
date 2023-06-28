@@ -1,20 +1,20 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.render("index");
+router.get('/', (req, res) => {
+  res.render('index');
 });
-router.get("/category", (req, res) => {
-  res.render("category");
+router.get('/category', (req, res) => {
+  res.render('category');
 });
-router.get("/detail", (req, res) => {
-  res.render("detail");
+router.get('/detail', (req, res) => {
+  res.render('detail');
 });
-router.get("/login", (req, res) => {
-  res.render("login");
+router.get('/login', (req, res) => {
+  res.render('login');
 });
-router.get("/sign-up", (req, res) => {
-  res.render("sign-up");
+router.get('/sign-up', (req, res) => {
+  res.render('sign-up');
 });
 // 메인페이지
 // 카테고리페이지
