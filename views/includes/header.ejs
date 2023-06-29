@@ -1,0 +1,15 @@
+<header>
+  <div class="wrap">
+    <h1><a href="/"></a></h1>
+    <div style="display: flex;">
+      <% if(login==1) { %>
+        <a class="login" style="margin-right: 20px;" href="/mypage">
+          내 정보
+        </a>
+        <a class="login" href="/api/users/signout">로그아웃</a>
+        <% } else { %>
+          <a class="login" href="/login">로그인</a>
+          <% } %>
+    </div>
+  </div>
+</header>

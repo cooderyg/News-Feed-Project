@@ -1,7 +1,6 @@
 {
   "name": "news-feed-project",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.729.0",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
@@ -27,5 +27,6 @@
     "dotenv": "^16.3.1",
     "nodemon": "^2.0.22",
     "sequelize-cli": "^6.6.1"
-  }
+  },
+  "description": ""
 }
