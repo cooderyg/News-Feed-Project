@@ -1,30 +1,49 @@
 const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middlewares/auth-middleware');
-const { Likes } = require('../models');
-const { Users } = require('../models');
-const { Places } = require('../models');
+const { Likes, Places } = require('../models');
 
-// 개념 맛집플레이스에 해당 사용자가 좋아요를 했는지
+// 나의 좋아요 수, 좋아요 업체 확인하기
+router.get('/user/mylike', authMiddleware, async (req, res) => {
+  let offset = 0;
 
-// 좋아요 확인하기
-router.get('/', async (req, res) => {
-  const likes = await Likes.findAll({
-    attributes: ['placeId', 'likeId', 'UserId', 'createdAt', 'updatedAt'],
-    include: [
-      {
-        model: Users,
-        attributes: ['name'], //사용자 이름 연결
-      },
-    ],
-    order: [['createdAt', 'DESC']],
+  const { userId } = req.session.user;
+  const page = req.query.page ?? 1;
+
+  const myLikescount = await Likes.count({ where: { UserId: userId } });
+
+  if (page > 1) {
+    offset = 20 * (page - 1);
+  }
+
+  console.log(offset);
+
+  const result = {
+    page: {
+      present: page,
+      max: Math.ceil(page / 10) * 10,
+      min: Math.ceil(page / 10) * 10 - 9,
+      maxPageCount: Math.ceil(myLikescount / 20),
+    },
+    data: {
+      list: await Places.findAll({ include: [{ model: Likes, as: 'Likes', where: { UserId: userId } }], limit: 20, offset: offset }),
+      count: myLikescount,
+    },
+  };
+
+  res.status(201).json(result);
+});
+
+// 좋아요 수 확인하기
+router.get('/:placeId', async (req, res) => {
+  const likes = await Likes.count({
+    where: { PlaceId: placeId },
   });
 
   return res.status(200).json({ data: likes });
 });
 
 //좋아요 만들기
-
 router.post('/:placeId', authMiddleware, async (req, res) => {
   const { userId } = res.locals.user;
   const { placeId } = req.params;

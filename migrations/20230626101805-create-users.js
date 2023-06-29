@@ -31,6 +31,14 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now'),
       },
+      profileImage: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
+      introduction: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
