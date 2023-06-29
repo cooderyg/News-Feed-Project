@@ -1,7 +1,38 @@
 const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middlewares/auth-middleware');
-const { Likes } = require('../models');
+const { Likes, Places } = require('../models');
+
+// 나의 좋아요 수, 좋아요 업체 확인하기
+router.get('/user/mylike', authMiddleware, async (req, res) => {
+  let offset = 0;
+
+  const { userId } = req.session.user;
+  const page = req.query.page ?? 1;
+
+  const myLikescount = await Likes.count({ where: { UserId: userId } });
+
+  if (page > 1) {
+    offset = 20 * (page - 1);
+  }
+
+  console.log(offset);
+
+  const result = {
+    page: {
+      present: page,
+      max: Math.ceil(page / 10) * 10,
+      min: Math.ceil(page / 10) * 10 - 9,
+      maxPageCount: Math.ceil(myLikescount / 20),
+    },
+    data: {
+      list: await Places.findAll({ include: [{ model: Likes, as: 'Likes', where: { UserId: userId } }], limit: 20, offset: offset }),
+      count: myLikescount,
+    },
+  };
+
+  res.status(201).json(result);
+});
 
 // 좋아요 수 확인하기
 router.get('/:placeId', async (req, res) => {
