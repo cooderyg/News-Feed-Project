@@ -1,250 +1,237 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>piggy-path mypage 마이페이지</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+      /* common */
+      * {
+        font-family: 'Noto Sans KR', sans-serif;
+        box-sizing: border-box;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>piggy-path mypage 마이페이지</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <style>
-    /* common */
-    * {
-      font-family: 'Noto Sans KR', sans-serif;
-      box-sizing: border-box;
-    }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+      /* 유저 프로필 */
+      .profile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 87px 0px 50px 0px;
+      }
 
-    /* 유저 프로필 */
-    .profile {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin: 87px 0px 50px 0px;
+      .box {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        /* background-color: skyblue; */
+      }
 
-    }
+      .box::after {
+        display: block;
+        content: '';
+        padding-bottom: 100%;
+      }
 
-    .box {
-      position: relative;
-      width: 150px;
-      height: 150px;
-      /* background-color: skyblue; */
-    }
+      .user-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px;
+      }
 
-    .box::after {
-      display: block;
-      content: '';
-      padding-bottom: 100%;
-    }
+      .user-info {
+        margin: 0px 0px 0 20px;
+      }
 
-    .user-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px;
-    }
+      .user-info button {
+        width: 100px;
+        background-color: #ff2e00;
+        color: #ffffff;
+        border-radius: 20px;
+        border: none;
+        font-size: 15px;
+      }
 
-    .user-info {
-      margin: 0px 0px 0 20px;
-    }
+      .user-info button:hover {
+        background-color: #ce2905;
+      }
 
-    .user-info button {
-      width: 100px;
-      background-color: #ff2e00;
-      color: #ffffff;
-      border-radius: 20px;
-      border: none;
-      font-size: 15px;
-    }
+      .title {
+        margin: 0px 0px 10px 0px;
+      }
 
-    .user-info button:hover {
-      background-color: #ce2905;
-    }
+      div {
+        display: block;
+      }
 
-    .title {
-      margin: 0px 0px 10px 0px;
-    }
+      .courses-container {
+        cursor: pointer;
+      }
 
-    div {
-      display: block;
-    }
+      .course {
+        background-color: #ffffff;
 
-    .courses-container {
-      cursor: pointer;
-    }
+        display: flex;
+        overflow: hidden;
+        width: 100%;
 
-    .course {
-      background-color: #ffffff;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
 
-      display: flex;
-      overflow: hidden;
-      width: 100%;
+      .course h6 {
+        opacity: 0.6;
+        margin: 0;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
 
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      padding-top: 20px;
-      padding-bottom: 20px;
-    }
+      .course h2 {
+        letter-spacing: 1px;
+        margin: 10px 0;
+      }
 
-    .course h6 {
-      opacity: 0.6;
-      margin: 0;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
+      .course-preview {
+        background-color: #2a265f;
+        color: #fff;
+        max-width: 150px;
+      }
 
-    .course h2 {
-      letter-spacing: 1px;
-      margin: 10px 0;
-    }
+      .course-preview a {
+        color: #fff;
+        display: inline-block;
+        font-size: 12px;
+        opacity: 0.6;
+        margin-top: 30px;
+        text-decoration: none;
+      }
 
-    .course-preview {
-      background-color: #2a265f;
-      color: #fff;
-      max-width: 150px;
-    }
+      .course-info {
+        padding: 30px;
+        position: relative;
+        width: 400px;
+      }
 
-    .course-preview a {
-      color: #fff;
-      display: inline-block;
-      font-size: 12px;
-      opacity: 0.6;
-      margin-top: 30px;
-      text-decoration: none;
-    }
+      .course i {
+        font-size: 20px;
+        color: #ff2e00;
+      }
 
-    .course-info {
-      padding: 30px;
-      position: relative;
-      width: 400px
-    }
+      .pageNumList {
+        margin-top: 30px;
+        margin-bottom: 50px;
+      }
 
-    .course i {
-      font-size: 20px;
-      color: #ff2e00;
-    }
+      .pageNumList > .buttons {
+        position: relative;
+        padding: 1rem 0;
+        display: inline-flex;
+        justify-content: center;
+        width: 100%;
+      }
 
-    .pageNumList {
-      margin-top: 30px;
-      margin-bottom: 50px;
-    }
+      .buttons > .button {
+        padding: 0 1rem;
+        font-size: 1.2rem;
+        color: #333;
+        background: transparent;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+      }
 
-    .pageNumList>.buttons {
-      position: relative;
-      padding: 1rem 0;
-      display: inline-flex;
-      justify-content: center;
-      width: 100%;
-    }
+      .buttons > .button.active,
+      .buttons > .button:hover {
+        color: #ff2e00;
+        font-weight: 600;
+        text-decoration: underline;
+      }
 
-    .buttons>.button {
-      padding: 0 1rem;
-      font-size: 1.2rem;
-      color: #333;
-      background: transparent;
-      border: 0;
-      outline: 0;
-      cursor: pointer;
-    }
+      .buttons > .prev {
+        position: absolute;
+        left: -2.5rem;
+      }
 
-    .buttons>.button.active,
-    .buttons>.button:hover {
-      color: #ff2e00;
-      font-weight: 600;
-      text-decoration: underline;
-    }
+      .buttons > .next {
+        position: absolute;
+        right: -2.5rem;
+      }
 
-    .buttons>.prev {
-      position: absolute;
-      left: -2.5rem;
-    }
+      /* header */
+      header {
+        z-index: 99;
+        position: fixed;
+        top: 0;
+        padding: 10px 0;
+        width: 100%;
+        background-color: #fff;
+        border-bottom: 1px solid #ccc;
+      }
 
-    .buttons>.next {
-      position: absolute;
-      right: -2.5rem;
-    }
+      header .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
 
+      h1 > a {
+        display: block;
+        width: 257px;
+        height: 53px;
+        background: no-repeat url('/img/logo.png');
+      }
 
-    /* header */
-    header {
-      z-index: 99;
-      position: fixed;
-      top: 0;
-      padding: 10px 0;
-      width: 100%;
-      background-color: #fff;
-      border-bottom: 1px solid #ccc;
-    }
+      .login {
+        color: #ff2e00;
+        font-weight: bold;
+        text-decoration: none;
+      }
+    </style>
+    <script src="/js/mypage.js" defer></script>
+  </head>
 
-    header .wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    h1>a {
-      display: block;
-      width: 257px;
-      height: 53px;
-      background: no-repeat url('https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687917967553-logo.png');
-    }
-
-    .login {
-      color: #ff2e00;
-      font-weight: bold;
-      text-decoration: none;
-    }
-  </style>
-  <script src="/js/mypage.js" defer></script>
-</head>
-
-<body>
-  <%- include('includes/header') %>
+  <body>
+    <%- include('includes/header') %>
     <div class="profile">
       <div class="box">
         <% if(profileImage) { %>
-          <img src="<%= profileImage %>" alt="" class="user-image">
-          <% } else { %>
-            <img src="/img/profile.jpg" alt="" class="user-image">
-            <% } %>
+        <img src="<%= profileImage %>" alt="" class="user-image" />
+        <% } else { %>
+        <img src="/img/profile.jpg" alt="" class="user-image" />
+        <% } %>
       </div>
       <div class="user-info">
-        <h1 style="font-size: 24px; margin-bottom: 10px">
-          <%= name %>
-        </h1>
-        <h2 style="font-size: 16px; margin-bottom: 10px">
-          <%= introduction %>
-        </h2>
+        <h1 style="font-size: 24px; margin-bottom: 10px"><%= name %></h1>
+        <h2 style="font-size: 16px; margin-bottom: 10px"><%= introduction %></h2>
         <button>프로필 수정</button>
       </div>
     </div>
 
     <h1 class="title">
       <span>"<%= name %>"</span>
-      님이 좋아하는 맛집
-      총 <span id="likesCount">0</span>개
+      님이 좋아하는 맛집 총 <span id="likesCount">0</span>개
     </h1>
 
-    <div id="likesList">
-
-    </div>
+    <div id="likesList"></div>
     <section class="pageNumList">
-      <div class="buttons">
-      </div>
+      <div class="buttons"></div>
     </section>
-
-</body>
-
+  </body>
 </html>
