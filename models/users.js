@@ -39,6 +39,14 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.STRING,
       },
+      profileImage: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
+      introduction: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
       createdAt: {
         allowNull: false, // NOT NULL
         type: DataTypes.DATE,
