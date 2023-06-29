@@ -26,6 +26,10 @@ router.get('/mypage', (req, res) => {
   return res.redirect('/');
 });
 
+router.get('/edit-review/:reviewId', (req, res) => {
+  if (req.session.user) return res.render('detail', { ...req.session.user, login: 1 });
+  return res.render('edit-review', { login: 0, reviewId: req.params.reviewId });
+});
 // search 페이지의 경우 places.route.js 참고
 
 // 메인페이지

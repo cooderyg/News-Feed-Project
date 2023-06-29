@@ -69,7 +69,7 @@ router.get('/:placeId', async (req, res) => {
 // 리뷰 수정
 router.put('/:reviewId', authMiddleware, async (req, res) => {
   const { reviewId } = req.params;
-  const { userId } = res.locals.user;
+  const { userId } = req.session.user;
   const { content, rating, imageUrl } = req.body;
 
   // 리뷰를 조회합니다.
@@ -111,7 +111,7 @@ router.put('/:reviewId', authMiddleware, async (req, res) => {
 // 게시글 삭제
 router.delete('/:reviewId', authMiddleware, async (req, res) => {
   const { reviewId } = req.params;
-  const { userId } = res.locals.user;
+  const { userId } = req.session.user;
 
   // 리뷰를 조회합니다.
   const review = await Reviews.findOne({ where: { reviewId } });

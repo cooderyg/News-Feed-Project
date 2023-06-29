@@ -90,6 +90,7 @@ router.get('/category/:placeCategoryId', async (req, res) => {
 
 router.get('/:placeId', async (req, res) => {
   const { placeId } = req.params;
+  const userId = req.session.user ? req.session.user.userId : null;
   try {
     const place = await Places.findOne({
       where: { placeId: +placeId },
@@ -102,7 +103,7 @@ router.get('/:placeId', async (req, res) => {
           include: [
             {
               model: Users,
-              attributes: ['name'],
+              attributes: ['name', 'userId'],
             },
             {
               model: ReviewImages,
@@ -112,7 +113,7 @@ router.get('/:placeId', async (req, res) => {
         },
       ],
     });
-    res.status(200).json(place);
+    res.status(200).json({ place, userId });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error });
