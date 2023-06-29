@@ -52,7 +52,7 @@ const getCategories = async () => {
 
 const search = () => {
   if (!searchBox.value) return alert('검색어를 입력해 주세요.');
-  window.location.href = `/api/places/search/${searchBox.value}?page=1`;
+  window.location.href = `/search?data=${searchBox.value}&page=1`;
 };
 
 searchBtn.addEventListener('click', search);
