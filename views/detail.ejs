@@ -1,131 +1,31 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <style>
-    /* common */
-    * {
-      font-family: 'Noto Sans KR', sans-serif;
-    }
-
-    a {
-      text-decoration: none;
-      display: block;
-    }
-
-    .wrap {
-      margin: 0 auto;
-      padding: 0 20px;
-      max-width: 1400px;
-    }
-
-    /* header */
-    header {
-      z-index: 99;
-      position: fixed;
-      top: 0;
-      padding: 10px 0;
-      width: 100%;
-      background-color: #fff;
-      border-bottom: 1px solid #ccc;
-    }
-
-    header .wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    h1>a {
-      display: block;
-      width: 257px;
-      height: 53px;
-      background: no-repeat url('https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687917967553-logo.png');
-    }
-
-    .login {
-      color: #ff2e00;
-      text-decoration: none;
-    }
-
-    /* Thumbnail */
-    .thumbnail {
-      max-width: 1400px;
-      margin: 74px auto 0;
-    }
-
-    .thumbnail img {
-      display: block;
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-    }
-
-    /* place */
-    .place {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .place .title {
-      padding: 32px 0 24px;
-      font-size: 32px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      margin-bottom: 24px;
-    }
-
-    .place .title span {
-      color: #ff2e00;
-    }
-
-    .place .like {
-      position: absolute;
-      font-size: 32px;
-      top: 30px;
-      right: 20px;
-      color: #ff2e00;
-    }
-
-    .place>ul>li>span:nth-child(1) {
-      color: #9d9d9d;
-      display: inline-block;
-      width: 120px;
-      padding: 0 8px 12px 0;
-    }
-
-    .menu-title {
-      vertical-align: top;
-    }
-
-    .menu {
-      display: inline-block;
-    }
-
-    .menu>li>span:nth-child(1) {
-      display: inline-block;
-      width: 70%;
-    }
-  </style>
-</head>
-
-<body>
-  <%- include('includes/header') %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/detail.css" />
+    <script src="/js/detail.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <h1><a href="/"></a></h1>
+        <div>
+          <a class="login" href="/login">로그인</a>
+        </div>
+      </div>
+    </header>
     <main>
       <section class="thumbnail">
-        <img src="https://www.shutterstock.com/ko/blog/wp-content/uploads/sites/17/2018/11/shutterstock_1068672764.jpg"
-          alt="" />
+        <img src="https://www.shutterstock.com/ko/blog/wp-content/uploads/sites/17/2018/11/shutterstock_1068672764.jpg" alt="" />
       </section>
       <section class="place">
-        <h1 class="title">록갈비 신림점 <span>4.7</span></h1>
+        <h1 class="title">록갈비 신림점</h1>
         <div class="like">
           <i class="fa fa-heart" aria-hidden="true"></i>
         </div>
@@ -169,7 +69,144 @@
           </li>
         </ul>
       </section>
+      <section class="review">
+        <div class="title-container">
+          <h2>리뷰 5개</h2>
+          <div class="review-write">
+            <span>리뷰 작성하기</span>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div id="modal" class="modal-overlay">
+          <div class="modal-window">
+            <div class="title"></div>
+            <div class="close-area">
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+            <div class="modal-content">
+              <h2>록갈비 신림점</h2>
+              <p>어떠셨는지 솔직하게 리뷰를 써주세요</p>
+              <div class="rating">
+                <i class="rating__default fa fa-star"></i>
+                <i class="rating__star fa fa-star-o"></i>
+                <i class="rating__star fa fa-star-o"></i>
+                <i class="rating__star fa fa-star-o"></i>
+                <i class="rating__star fa fa-star-o"></i>
+              </div>
+              <textarea class="review-text" placeholder="주문하신 메뉴는 어떠셨나요? 식당의분위기와 서비스도 궁금해요!"></textarea>
+              <div class="upload-container">
+                <div class="upload"><i class="fa fa-plus-square-o" aria-hidden="true"></i></div>
+              </div>
+              <input class="upload-input" type="file" accept="image/jpeg, image/png" />
+              <button class="review-btn">리뷰올리기</button>
+            </div>
+          </div>
+        </div>
+        <ul>
+          <li>
+            <div class="review-container">
+              <div class="profile">
+                <img src="https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687943098969-profile.png" alt="" />
+                <div>인생이 막창이네</div>
+              </div>
+              <div class="label">
+                <p>2023-03-01</p>
+                <p>단호박빙수, 오미자에이드부산에 있는 고즈넉한 한국식 카페 비비비당! 언덕 위에 위치하고있는만큼, 바다가 펼쳐진 뷰가 정말 좋아요. 매장 분위기도 차분한 한식 분위기라 바다와 너무 잘어울려요 ㅎㅎ단호박빙수, 정말 독특한데 맛있고 계속 당기는 맛!</p>
+                <img src="" alt="" />
+              </div>
+              <div class="star">
+                <div>5</div>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="review-container">
+              <div class="profile">
+                <img src="https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687943098969-profile.png" alt="" />
+                <div>인생이 막창이네</div>
+              </div>
+              <div class="label">
+                <p>2023-03-01</p>
+                <p>단호박빙수, 오미자에이드부산에 있는 고즈넉한 한국식 카페 비비비당! 언덕 위에 위치하고있는만큼, 바다가 펼쳐진 뷰가 정말 좋아요. 매장 분위기도 차분한 한식 분위기라 바다와 너무 잘어울려요 ㅎㅎ단호박빙수, 정말 독특한데 맛있고 계속 당기는 맛!</p>
+                <img src="" alt="" />
+              </div>
+              <div class="star">
+                <div>5</div>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="review-container">
+              <div class="profile">
+                <img src="https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687943098969-profile.png" alt="" />
+                <div>인생이 막창이네</div>
+              </div>
+              <div class="label">
+                <p>2023-03-01</p>
+                <p>단호박빙수, 오미자에이드부산에 있는 고즈넉한 한국식 카페 비비비당! 언덕 위에 위치하고있는만큼, 바다가 펼쳐진 뷰가 정말 좋아요. 매장 분위기도 차분한 한식 분위기라 바다와 너무 잘어울려요 ㅎㅎ단호박빙수, 정말 독특한데 맛있고 계속 당기는 맛!</p>
+                <img src="" alt="" />
+              </div>
+              <div class="star">
+                <div>5</div>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="review-container">
+              <div class="profile">
+                <img src="https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687943098969-profile.png" alt="" />
+                <div>인생이 막창이네</div>
+              </div>
+              <div class="label">
+                <p>2023-03-01</p>
+                <p>단호박빙수, 오미자에이드부산에 있는 고즈넉한 한국식 카페 비비비당! 언덕 위에 위치하고있는만큼, 바다가 펼쳐진 뷰가 정말 좋아요. 매장 분위기도 차분한 한식 분위기라 바다와 너무 잘어울려요 ㅎㅎ단호박빙수, 정말 독특한데 맛있고 계속 당기는 맛!</p>
+                <img src="" alt="" />
+              </div>
+              <div class="star">
+                <div>5</div>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="review-container">
+              <div class="profile">
+                <img src="https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687943098969-profile.png" alt="" />
+                <div>인생이 막창이네</div>
+              </div>
+              <div class="label">
+                <p>2023-03-01</p>
+                <p>단호박빙수, 오미자에이드부산에 있는 고즈넉한 한국식 카페 비비비당! 언덕 위에 위치하고있는만큼, 바다가 펼쳐진 뷰가 정말 좋아요. 매장 분위기도 차분한 한식 분위기라 바다와 너무 잘어울려요 ㅎㅎ단호박빙수, 정말 독특한데 맛있고 계속 당기는 맛!</p>
+                <img src="" alt="" />
+              </div>
+              <div class="star">
+                <div>5</div>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="review-container">
+              <div class="profile">
+                <img src="https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687943098969-profile.png" alt="" />
+                <div>인생이 막창이네</div>
+              </div>
+              <div class="label">
+                <p>2023-03-01</p>
+                <p>단호박빙수, 오미자에이드부산에 있는 고즈넉한 한국식 카페 비비비당! 언덕 위에 위치하고있는만큼, 바다가 펼쳐진 뷰가 정말 좋아요. 매장 분위기도 차분한 한식 분위기라 바다와 너무 잘어울려요 ㅎㅎ단호박빙수, 정말 독특한데 맛있고 계속 당기는 맛!</p>
+                <img src="" alt="" />
+              </div>
+              <div class="star">
+                <div>5</div>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
     </main>
-</body>
-
+  </body>
 </html>
