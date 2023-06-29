@@ -260,9 +260,28 @@
     <main>
       <section class="place">
         <h1 class="title"><span>
-            <%= categoryName %> TOP 20
+            <%= name %> 맛집 베스트 TOP 20
           </span></h1>
 
+        <% data.forEach((info)=> { %>
+          <div class="courses-container" onclick="window.location.href='/detail/<%=info.placeId %>'">
+            <div class="course">
+              <img src="<%=info.imageUrl %>" class="course-preview">
+              </img>
+              <div class="course-info">
+                <h6 style="font-size: 13px;">
+                  <%= info.address %>
+                </h6>
+                <h2 style="font-size: 24px; font-weight: 600;">
+                  <%= info.name %>
+                </h2>
+                <p style="color: gray; font-size: 14px;">
+                  <%= info.foodType %>
+                </p>
+              </div>
+            </div>
+          </div>
+          <% }) %>
 
 
       </section>

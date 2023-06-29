@@ -59,32 +59,6 @@ router.get('/', async (req, res) => {
     res.status(500).json({ message: error });
   }
 });
-// categoryId로만 특정 검색 "star"기준으로 내림차순 정렬
-router.get('/category/:placeCategoryId', async (req, res) => {
-  const { placeCategoryId } = req.params;
-  const { page } = req.query;
-  const pageNum = parseInt(page) || 1;
-  const offset = (pageNum - 1) * placePerPage;
-  const limit = placePerPage;
-
-  try {
-    const places = await Places.findAll({
-      where: { PlaceCategoryId: placeCategoryId },
-      limit,
-      offset,
-      order: [['star', 'DESC']], // "star" 기준으로 내림차순 정렬
-      include: [
-        {
-          model: Menus,
-          as: 'Menus',
-        },
-      ],
-    });
-    res.status(200).json(places);
-  } catch (error) {
-    res.status(500).json({ message: error });
-  }
-});
 
 //  plcae_ID만 상세 조회
 
@@ -183,32 +157,6 @@ router.delete('/:placeId', async (req, res) => {
 router.get('/main/best12', async (req, res) => {
   try {
     res.status(201).json(await Places.findAll({ order: [['star', 'DESC']], limit: 12 }));
-  } catch (err) {
-    console.error(err);
-    res.status(412).json({ message: '오류가 발생하였습니다.' });
-  }
-});
-
-router.get('/search/:data', async (req, res) => {
-  try {
-    let offset = 0;
-
-    const { data } = req.params;
-    const { page } = req.query;
-
-    if (!data) return res.status(412).json({ message: '검색어를 입력해 주세요.' });
-
-    const presentMaxPageCount = Math.ceil(page / 10) * 10;
-    const presentminPageCount = Math.ceil(page / 10) * 10 - 9;
-    const maxPageCount = Math.ceil((await Places.count({ where: { [Op.or]: { name: { [Op.like]: `%${data}%` }, foodType: { [Op.like]: `%${data}%` }, address: { [Op.like]: `%${data}%` } } } })) / 20);
-
-    if (page > 1) {
-      offset = 20 * (page - 1);
-    }
-    const result = await Places.findAll({ where: { [Op.or]: { name: { [Op.like]: `%${data}%` }, foodType: { [Op.like]: `%${data}%` }, address: { [Op.like]: `%${data}%` } } }, limit: 20, offset: offset, order: [['star', 'DESC']] });
-
-    if (req.session.user) return res.render('search', { ...req.session.user, login: 1, data, page, result, presentMaxPageCount, presentminPageCount, maxPageCount });
-    return res.render('search', { login: 0, data, page, result, presentMaxPageCount, presentminPageCount, maxPageCount });
   } catch (err) {
     console.error(err);
     res.status(412).json({ message: '오류가 발생하였습니다.' });

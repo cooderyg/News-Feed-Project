@@ -267,7 +267,7 @@
 
 
           <% result.forEach((info)=> { %>
-            <div class="courses-container" onclick="window.location.href='../../../detail/<%= info.placeId %>'">
+            <div class="courses-container" onclick="window.location.href='/detail/<%= info.placeId %>'">
               <div class="course">
                 <img src="<%= info.imageUrl %>" class="course-preview">
                 </img>
@@ -290,7 +290,7 @@
           <div class="buttons">
 
             <% if(presentminPageCount !==1) { %>
-              <a class="button" href="/api/places/search/<%= data %>?page=<%= presentminPageCount - 1 %>">
+              <a class="button" href="/search?data=<%= data %>&page=<%= presentminPageCount - 1 %>">
                 < </a>
                   <% } %>
 
@@ -298,11 +298,11 @@
 
                       <% if(maxPageCount> i) { %>
                         <% if(page==i) { %>
-                          <a class="button active" href="/api/places/search/<%= data %>?page=<%= i %>">
+                          <a class="button active" href="/search?data=<%= data %>&page=<%= i %>">
                             <%= i %>
                           </a>
                           <% } else { %>
-                            <a class="button" href="/api/places/search/<%= data %>?page=<%= i %>">
+                            <a class="button" href="/search?data=<%= data %>&page=<%= i %>">
                               <%= i %>
                             </a>
                             <% } %>
@@ -312,7 +312,7 @@
 
                                   <% if(presentMaxPageCount < maxPageCount) { %>
                                     <a class="button"
-                                      href="/api/places/search/<%= data %>?page=<%= presentMaxPageCount + 1 %>">
+                                      href="/search?data=<%= data %>&page=<%= presentMaxPageCount + 1 %>">
                                       > </a>
                                     <% } %>
 
