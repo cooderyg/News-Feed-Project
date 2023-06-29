@@ -115,11 +115,15 @@ h1 > a {
   padding: 20px 0;
   cursor: pointer;
 }
+.title-container .review-write.on {
+  display: none;
+}
 .review .review-container {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 0;
+  padding: 36px 0;
   border-bottom: 1px solid #ccc;
 }
 .review .profile {
@@ -156,8 +160,19 @@ h1 > a {
 .review .star i {
   font-size: 28px;
 }
-
+.btn-container {
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+.btn-container button {
+  background-color: transparent;
+  border: none;
+  color: #9d9d9d;
+  cursor: pointer;
+}
 #modal.modal-overlay {
+  z-index: 999;
   width: 100%;
   height: 100%;
   position: fixed;
