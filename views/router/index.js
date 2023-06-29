@@ -25,6 +25,10 @@ router.get('/mypage', (req, res) => {
   if (req.session.user) return res.render('mypage', { ...req.session.user, login: 1 });
   return res.redirect('/');
 });
+router.get('/categories/:categoryId', (req, res) => {
+  if (req.session.user) return res.render('index', { ...req.session.user, login: 1 });
+  return res.render('category', { login: 0, categoryName: '부산' });
+});
 
 // search 페이지의 경우 places.route.js 참고
 
