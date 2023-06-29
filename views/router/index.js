@@ -14,13 +14,16 @@ router.get('/detail', (req, res) => {
   return res.render('detail', { login: 0 });
 });
 router.get('/login', (req, res) => {
-  res.render('login');
+  if (req.session.user) return res.redirect('/');
+  return res.render('login', { login: 0 });
 });
 router.get('/sign-up', (req, res) => {
-  res.render('sign-up');
+  if (req.session.user) return res.redirect('/');
+  return res.render('sign-up', { login: 0 });
 });
 router.get('/mypage', (req, res) => {
-  res.render('mypage');
+  if (req.session.user) return res.render('mypage', { ...req.session.user, login: 1 });
+  return res.redirect('/');
 });
 
 // search 페이지의 경우 places.route.js 참고
