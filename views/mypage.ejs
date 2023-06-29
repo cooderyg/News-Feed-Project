@@ -9,306 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <style>
-    /* common */
-    * {
-      font-family: 'Noto Sans KR', sans-serif;
-      box-sizing: border-box;
-    }
-
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* 유저 프로필 */
-    .profile {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin: 87px 0px 50px 0px;
-    }
-
-    .box {
-      position: relative;
-      width: 150px;
-      height: 150px;
-      /* background-color: skyblue; */
-    }
-
-    .box::after {
-      display: block;
-      content: '';
-      padding-bottom: 100%;
-    }
-
-    .user-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px;
-    }
-
-    .user-info {
-      margin: 0px 0px 0 20px;
-    }
-
-    .user-info button {
-      width: 100px;
-      background-color: #ff2e00;
-      color: #ffffff;
-      border-radius: 20px;
-      border: none;
-      font-size: 15px;
-    }
-
-    .user-info button:hover {
-      background-color: #ce2905;
-    }
-
-    .title {
-      margin: 0px 0px 10px 0px;
-    }
-
-    div {
-      display: block;
-    }
-
-    .courses-container {
-      cursor: pointer;
-    }
-
-    .course {
-      background-color: #ffffff;
-
-      display: flex;
-      overflow: hidden;
-      width: 100%;
-
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      padding-top: 20px;
-      padding-bottom: 20px;
-    }
-
-    .course h6 {
-      opacity: 0.6;
-      margin: 0;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .course h2 {
-      letter-spacing: 1px;
-      margin: 10px 0;
-    }
-
-    .course-preview {
-      background-color: #2a265f;
-      color: #fff;
-      max-width: 150px;
-    }
-
-    .course-preview a {
-      color: #fff;
-      display: inline-block;
-      font-size: 12px;
-      opacity: 0.6;
-      margin-top: 30px;
-      text-decoration: none;
-    }
-
-    .course-info {
-      padding: 30px;
-      position: relative;
-      width: 400px;
-    }
-
-    .course i {
-      font-size: 20px;
-      color: #ff2e00;
-    }
-
-    .pageNumList {
-      margin-top: 30px;
-      margin-bottom: 50px;
-    }
-
-    .pageNumList>.buttons {
-      position: relative;
-      padding: 1rem 0;
-      display: inline-flex;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .buttons>.button {
-      padding: 0 1rem;
-      font-size: 1.2rem;
-      color: #333;
-      background: transparent;
-      border: 0;
-      outline: 0;
-      cursor: pointer;
-    }
-
-    .buttons>.button.active,
-    .buttons>.button:hover {
-      color: #ff2e00;
-      font-weight: 600;
-      text-decoration: underline;
-    }
-
-    .buttons>.prev {
-      position: absolute;
-      left: -2.5rem;
-    }
-
-    .buttons>.next {
-      position: absolute;
-      right: -2.5rem;
-    }
-
-    /* header */
-    header {
-      z-index: 99;
-      position: fixed;
-      top: 0;
-      padding: 10px 0;
-      width: 100%;
-      background-color: #fff;
-      border-bottom: 1px solid #ccc;
-    }
-
-    header .wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    h1>a {
-      display: block;
-      width: 257px;
-      height: 53px;
-      background: no-repeat url('/img/logo.png');
-    }
-
-    .login {
-      color: #ff2e00;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-
-    /* 프로필 수정 */
-
-    #modal.modal-overlay {
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      left: 0;
-      top: 0;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0, 0, 0, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 10px;
-    }
-
-    #modal.modal-overlay.on {
-      display: flex;
-    }
-
-    #modal .modal-window {
-      position: relative;
-      border-radius: 10px;
-      top: 0;
-      background: #fff;
-      max-width: 800px;
-      padding: 40px 30px;
-    }
-
-    #modal .title {
-      padding-left: 10px;
-      display: inline;
-    }
-
-    #modal .close-area {
-      position: absolute;
-      top: 15px;
-      right: 10px;
-      padding-right: 10px;
-      cursor: pointer;
-    }
-
-    #modal .modal-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-      padding: 0px 5px;
-    }
-
-    #modal .modal-content h2 {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    #modal .modal-content p {
-      font-size: 16px;
-      padding: 10px 0;
-    }
-
-    #modal textarea {
-      border-radius: 10px;
-      padding: 0 10px;
-    }
-
-    #modal .picture-modify {
-      width: 100%;
-      margin: 0px 0px 10px 0px;
-    }
-
-    #modal .name-text {
-      outline: none;
-      width: 400px;
-      height: 30px;
-    }
-
-    #modal .introduce-text {
-      outline: none;
-      width: 400px;
-      height: 50px;
-      margin-bottom: 20px;
-    }
-
-    #modal .modal-content h3 {
-      width: 100%;
-      text-align: left;
-      font-size: 15px;
-      font-weight: bold;
-      margin: 20px 0px 5px 0px;
-    }
-
-    #modal .profile-btn {
-      width: 100px;
-      height: 32px;
-      background-color: #ff2e00;
-      color: #ffffff;
-      border-radius: 20px;
-      border: none;
-      font-size: 15px;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/mypage.css">
   <script src="/js/mypage.js" defer></script>
 </head>
 
@@ -333,22 +34,48 @@
       </div>
     </div>
 
-    <div id=“modal” class=“modal-overlay”>
-      <div class=“modal-window”>
-        <div class=“title”></div>
-        <div class=“close-area”>
-          <i class=“fa fa-times” aria-hidden=“true”></i>
+    <div id="modal" class="modal-overlay">
+      <div class="modal-window">
+        <div class="title"></div>
+        <div class="close-area">
+          <i class="fa fa-times" aria-hidden="true"></i>
         </div>
 
-        <h1 class="title">
-          <span>"<%= name %>"</span>
-          님이 좋아하는 맛집 총 <span id="likesCount">0</span>개
-        </h1>
+        <!-- 프로필 수정 팝업 영역 -->
+        <div class="modal-content">
+          <h2>프로필 수정</h2>
+          <p>piggypath 대표 프로필과 닉네임을 수정해보세요</p>
+          <div class="profile">
+            <% if(profileImage) { %>
+              <img src="<%= profileImage %>" alt="" />
+              <% } else { %>
+                <img src="/img/profile.jpg" alt="" />
+                <% } %>
 
-        <div id="likesList"></div>
-        <section class="pageNumList">
-          <div class="buttons"></div>
-        </section>
+          </div>
+          <div class="upload-picture">
+            <input class="picture-modify" type="file" accept="image/jpeg, image/png" />
+            <button class="picture-delete">사진 삭제</button>
+          </div>
+          <h3>닉네임</h3>
+          <textarea class="name-text" placeholder="이름을 수정해보세요"><%= name %></textarea>
+          <h3>소개</h3>
+          <textarea class="introduce-text" placeholder="소개 최대 30자 입력 가능합니다"><%= introduction %></textarea>
+          <button class="profile-btn">적용</button>
+        </div>
+      </div>
+    </div>
+
+
+    <h1 class="title">
+      <span>"<%= name %>"</span>
+      님이 좋아하는 맛집 총 <span id="likesCount">0</span>개
+    </h1>
+
+    <div id="likesList"></div>
+    <section class="pageNumList">
+      <div class="buttons"></div>
+    </section>
 </body>
 
 </html>
