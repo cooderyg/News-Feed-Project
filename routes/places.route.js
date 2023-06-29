@@ -46,6 +46,7 @@ router.get('/', async (req, res) => {
     const places = await Places.findAll({
       limit,
       offset,
+      order: [['star', 'DESC']], // 별점 기준으로 내림차순 정렬
       include: [
         {
           model: Menus,
@@ -63,14 +64,15 @@ router.get('/category/:placeCategoryId', async (req, res) => {
   const { placeCategoryId } = req.params;
   const { page } = req.query;
   const pageNum = parseInt(page) || 1;
-  const offset = (pageNum - 1) * itemsPerPage;
-  const limit = itemsPerPage;
+  const offset = (pageNum - 1) * placePerPage;
+  const limit = placePerPage;
 
   try {
     const places = await Places.findAll({
       where: { PlaceCategoryId: placeCategoryId },
       limit,
       offset,
+      order: [['star', 'DESC']], // 별점 기준으로 내림차순 정렬
       include: [
         {
           model: Menus,
