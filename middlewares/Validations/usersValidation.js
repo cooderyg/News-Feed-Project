@@ -37,6 +37,11 @@ const userValidation = {
         .regex(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i)
         .required()
         .messages(user.email),
+      name: Joi.string()
+        .empty()
+        .regex(/^[가-힣a-zA-Z]+$/)
+        .required()
+        .messages(user.name),
       password: Joi.string()
         .empty()
         .min(8)
@@ -44,11 +49,7 @@ const userValidation = {
         .regex(/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])/)
         .required()
         .messages(user.password),
-      name: Joi.string()
-        .empty()
-        .regex(/^[가-힣a-zA-Z]+$/)
-        .required()
-        .messages(user.name),
+      confirmPassword: Joi.string().valid(Joi.ref('password')).required().messages(user.confirmPassword),
     });
 
     try {

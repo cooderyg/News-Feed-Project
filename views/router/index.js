@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -13,11 +14,14 @@ router.get('/detail', (req, res) => {
   return res.render('detail', { login: 0 });
 });
 router.get('/login', (req, res) => {
-  res.render('login', { title: '심재두' });
+  res.render('login');
 });
 router.get('/sign-up', (req, res) => {
   res.render('sign-up');
 });
+
+// search 페이지의 경우 places.route.js 참고
+
 // 메인페이지
 // 카테고리페이지
 // 상세페이지
