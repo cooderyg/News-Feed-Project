@@ -4,7 +4,7 @@ const { Places } = require('../models');
 const { Menus } = require('../models');
 const { Op } = require('sequelize');
 
-// 맛집 등록 ok
+// 맛집 등록
 router.post('/:placeCategoryId', async (req, res) => {
   const { placeCategoryId } = req.params;
   const { name, address, phoneNumber, foodType, priceRange, openingHours, star, imageUrl, menu } = req.body;
@@ -36,7 +36,7 @@ router.post('/:placeCategoryId', async (req, res) => {
 });
 
 const placePerPage = 20; // 페이지 당 항목 수
-// 맛집 전체 조회
+// 맛집 전체 조회 "star"기준으로 내림차순 정렬
 router.get('/', async (req, res) => {
   const { page } = req.query;
   const pageNum = parseInt(page) || 1;
@@ -47,6 +47,7 @@ router.get('/', async (req, res) => {
     const places = await Places.findAll({
       limit,
       offset,
+      order: [['star', 'DESC']], // "star" 기준으로 내림차순 정렬
       include: [
         {
           model: Menus,
@@ -59,19 +60,20 @@ router.get('/', async (req, res) => {
     res.status(500).json({ message: error });
   }
 });
-// categoryId로만 특정 검색
+// categoryId로만 특정 검색 "star"기준으로 내림차순 정렬
 router.get('/category/:placeCategoryId', async (req, res) => {
   const { placeCategoryId } = req.params;
   const { page } = req.query;
   const pageNum = parseInt(page) || 1;
-  const offset = (pageNum - 1) * itemsPerPage;
-  const limit = itemsPerPage;
+  const offset = (pageNum - 1) * placePerPage;
+  const limit = placePerPage;
 
   try {
     const places = await Places.findAll({
       where: { PlaceCategoryId: placeCategoryId },
       limit,
       offset,
+      order: [['star', 'DESC']], // "star" 기준으로 내림차순 정렬
       include: [
         {
           model: Menus,
@@ -127,7 +129,7 @@ router.put('/:placeId', async (req, res) => {
       }
     );
 
-    // 기존에 있는 메뉴들을 삭제??
+    // 기존에 있는 메뉴들을 삭제
     await Menus.destroy({
       where: { PlaceId: placeId },
     });
