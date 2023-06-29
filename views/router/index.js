@@ -19,6 +19,9 @@ router.get('/login', (req, res) => {
 router.get('/sign-up', (req, res) => {
   res.render('sign-up');
 });
+router.get('/mypage', (req, res) => {
+  res.render('mypage');
+});
 
 // search 페이지의 경우 places.route.js 참고
 

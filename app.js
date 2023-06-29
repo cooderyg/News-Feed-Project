@@ -7,7 +7,7 @@ const router = require('./routes/index.route.js');
 const viewRouter = require('./views/router');
 const { SESSION_SECRET_KEY } = process.env;
 
-const dotenv = require("dotenv");
+const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
