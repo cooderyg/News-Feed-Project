@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="/js/search.js" defer></script>
   <style>
     /* common */
@@ -148,7 +149,8 @@
     .course-preview {
       background-color: #2A265F;
       color: #fff;
-      max-width: 150px;
+      width: 150px;
+      height: 150px;
     }
 
     .course-preview a {
@@ -253,6 +255,81 @@
       color: #ff2e00;
       cursor: pointer;
     }
+
+
+    /*========스켈레톤 애니메이션 시작========*/
+    .flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-align: justify;
+    }
+
+    @media (max-width: 767.98px) {
+      .flex {
+        display: grid;
+      }
+    }
+
+    .item {
+      padding: 2rem;
+    }
+
+    .item-img {
+      position: relative;
+      width: 150px;
+      height: 150px;
+    }
+
+    /*스켈레톤 메인 컨테이너*/
+    .skeleton_loading {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-color);
+    }
+
+    /* 스켈레톤 이미지 */
+    .skeleton_img {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 스켈레톤 텍스트 */
+    .skeleton_text {
+      margin-bottom: 0.5rem;
+      height: 1rem;
+    }
+
+    .skeleton_text:nth-child(1) {
+      width: 60%;
+      height: 1.1rem;
+      margin-top: -5px;
+    }
+
+    .skeleton_text:nth-child(2) {
+      width: 50%;
+      height: 1.5rem;
+    }
+
+    .skeleton_text:last-child {
+      width: 30%;
+    }
+
+    .skeleton_loading * {
+      background: linear-gradient(120deg, #e5e5e5 30%, #f0f0f0 38%, #f0f0f0 40%, #e5e5e5 48%);
+      border-radius: 0.8rem;
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      animation: load 1s infinite;
+    }
+
+    @keyframes load {
+      100% {
+        background-position: -100% 0;
+      }
+    }
   </style>
 </head>
 
@@ -269,16 +346,26 @@
           <% result.forEach((info)=> { %>
             <div class="courses-container" onclick="window.location.href='/detail/<%= info.placeId %>'">
               <div class="course">
-                <img src="<%= info.imageUrl %>" class="course-preview">
-                </img>
-                <div class="course-info">
-                  <h6 style="font-size: 13px;">
+                <div class="item-img">
+                  <div class="skeleton_loading">
+                    <div class="skeleton_img"></div>
+                  </div>
+                  <img src="<%= info.imageUrl %>" class="course-preview" style="border-radius: 1.5rem;">
+                  </img>
+                </div>
+                <div class="course-info item-text">
+                  <div class="skeleton_loading">
+                    <div class="skeleton_text"></div>
+                    <div class="skeleton_text"></div>
+                    <div class="skeleton_text"></div>
+                  </div>
+                  <h3 style="font-size: 13px; padding-left: 5px;">
                     <%= info.address %>
-                  </h6>
-                  <h2 style="font-size: 24px; font-weight: 600;">
+                  </h3>
+                  <h2 style="font-size: 24px; font-weight: 600; padding-left: 5px;">
                     <%= info.name %>
                   </h2>
-                  <p style="color: gray; font-size: 14px;">
+                  <p style="color: gray; font-size: 14px; padding-left: 5px;">
                     <%= info.foodType %>
                   </p>
                 </div>
