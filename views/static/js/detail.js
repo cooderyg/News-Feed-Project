@@ -99,3 +99,40 @@ uploadInputEl.addEventListener('change', async (e) => {
 //     },
 //   });
 // });
+
+// 좋아요 기능 구현
+const heartIcon = document.getElementById('heartIcon');
+let isLiked = false;
+heartIcon.addEventListener('click', function () {
+  isLiked = !isLiked;
+
+  const placeId = 'placeId';
+  const apiUrl = `http://localhost:3000/detail/${placeId}`;
+
+  const requestBody = {
+    PlaceId: placeId,
+    bool: isLiked,
+  };
+
+  fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(requestBody),
+  })
+    .then((response) => response.json())
+    .then(handleResponse)
+    .catch((error) => {
+      console.error('오류가 발생했습니다.', error);
+      // 에러 처리 로직 추가
+    });
+
+  function handleResponse(data) {
+    if (data.liked) {
+      heartIcon.classList.add('liked');
+    } else {
+      heartIcon.classList.remove('liked');
+    }
+  }
+});
