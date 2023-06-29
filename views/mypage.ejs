@@ -204,6 +204,110 @@
       font-weight: bold;
       text-decoration: none;
     }
+
+
+    /* 프로필 수정 */
+
+    #modal.modal-overlay {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 10px;
+    }
+
+    #modal.modal-overlay.on {
+      display: flex;
+    }
+
+    #modal .modal-window {
+      position: relative;
+      border-radius: 10px;
+      top: 0;
+      background: #fff;
+      max-width: 800px;
+      padding: 40px 30px;
+    }
+
+    #modal .title {
+      padding-left: 10px;
+      display: inline;
+    }
+
+    #modal .close-area {
+      position: absolute;
+      top: 15px;
+      right: 10px;
+      padding-right: 10px;
+      cursor: pointer;
+    }
+
+    #modal .modal-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      padding: 0px 5px;
+    }
+
+    #modal .modal-content h2 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #modal .modal-content p {
+      font-size: 16px;
+      padding: 10px 0;
+    }
+
+    #modal textarea {
+      border-radius: 10px;
+      padding: 0 10px;
+    }
+
+    #modal .picture-modify {
+      width: 100%;
+      margin: 0px 0px 10px 0px;
+    }
+
+    #modal .name-text {
+      outline: none;
+      width: 400px;
+      height: 30px;
+    }
+
+    #modal .introduce-text {
+      outline: none;
+      width: 400px;
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    #modal .modal-content h3 {
+      width: 100%;
+      text-align: left;
+      font-size: 15px;
+      font-weight: bold;
+      margin: 20px 0px 5px 0px;
+    }
+
+    #modal .profile-btn {
+      width: 100px;
+      height: 32px;
+      background-color: #ff2e00;
+      color: #ffffff;
+      border-radius: 20px;
+      border: none;
+      font-size: 15px;
+    }
   </style>
   <script src="/js/mypage.js" defer></script>
 </head>
@@ -225,19 +329,26 @@
         <h2 style="font-size: 16px; margin-bottom: 10px">
           <%= introduction %>
         </h2>
-        <button>프로필 수정</button>
+        <button class="profile-write">프로필 수정</button>
       </div>
     </div>
 
-    <h1 class="title">
-      <span>"<%= name %>"</span>
-      님이 좋아하는 맛집 총 <span id="likesCount">0</span>개
-    </h1>
+    <div id=“modal” class=“modal-overlay”>
+      <div class=“modal-window”>
+        <div class=“title”></div>
+        <div class=“close-area”>
+          <i class=“fa fa-times” aria-hidden=“true”></i>
+        </div>
 
-    <div id="likesList"></div>
-    <section class="pageNumList">
-      <div class="buttons"></div>
-    </section>
+        <h1 class="title">
+          <span>"<%= name %>"</span>
+          님이 좋아하는 맛집 총 <span id="likesCount">0</span>개
+        </h1>
+
+        <div id="likesList"></div>
+        <section class="pageNumList">
+          <div class="buttons"></div>
+        </section>
 </body>
 
 </html>
