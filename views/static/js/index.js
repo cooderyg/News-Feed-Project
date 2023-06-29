@@ -24,9 +24,9 @@ const getBest12 = async () => {
 
 const getCategories = async () => {
   const api = await fetch('./api/placeCategories');
-  const result = await api.json();
+  const { data } = await api.json();
 
-  result.forEach((info, index) => {
+  data.forEach((info, index) => {
     categoriesList.innerHTML += `
     <div class="category-list swiper-slide">
               <a href="/categories/${info.placeCategoryId}">

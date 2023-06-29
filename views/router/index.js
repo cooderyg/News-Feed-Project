@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
+const { Places, PlaceCategories } = require('../../models');
 
 router.get('/', (req, res) => {
   if (req.session.user) return res.render('index', { ...req.session.user, login: 1 });
@@ -26,6 +27,7 @@ router.get('/mypage', (req, res) => {
   return res.redirect('/');
 });
 router.get('/categories/:categoryId', (req, res) => {
+  const { categoryId } = req.params;
   if (req.session.user) return res.render('index', { ...req.session.user, login: 1 });
   return res.render('category', { login: 0, categoryName: '부산' });
 });
