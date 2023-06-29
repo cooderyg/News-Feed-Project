@@ -53,6 +53,7 @@
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px;
     }
 
     .user-info {
@@ -212,8 +213,13 @@
 <body>
   <%- include('includes/header') %>
     <div class="profile">
-      <div class="box"><img src="https://cdn.sisamagazine.co.kr/news/photo/201905/193585_185187_2813.jpg" alt=""
-          class="user-image"></div>
+      <div class="box">
+        <% if(profileImage) { %>
+          <img src="<%= profileImage %>" alt="" class="user-image">
+          <% } else { %>
+            <img src="/img/profile.jpg" alt="" class="user-image">
+            <% } %>
+      </div>
       <div class="user-info">
         <h1 style="font-size: 24px; margin-bottom: 10px">
           <%= name %>
