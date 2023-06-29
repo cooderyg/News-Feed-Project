@@ -9,9 +9,9 @@ router.get('/', (req, res) => {
 router.get('/category', (req, res) => {
   res.render('category');
 });
-router.get('/detail', (req, res) => {
+router.get('/detail/:placeId', (req, res) => {
   if (req.session.user) return res.render('detail', { ...req.session.user, login: 1 });
-  return res.render('detail', { login: 0 });
+  return res.render('detail', { login: 0, placeId: req.params.placeId });
 });
 router.get('/login', (req, res) => {
   res.render('login');

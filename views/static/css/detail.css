@@ -40,7 +40,7 @@ h1 > a {
 }
 /* Thumbnail */
 .thumbnail {
-  max-width: 1400px;
+  max-width: 800px;
   margin: 74px auto 0;
 }
 .thumbnail img {
@@ -108,6 +108,7 @@ h1 > a {
   display: flex;
 }
 .title-container h2 {
+  color: #ff2e00;
   flex: 1;
 }
 .title-container .review-write {
@@ -131,12 +132,19 @@ h1 > a {
   width: 48px;
 }
 .review .profile div {
+  color: #9d9d9d;
   font-size: 12px;
 }
 .review .label {
   width: 60%;
   line-height: 1.6;
   font-size: 14px;
+}
+.review .review-img {
+  display: inline-block;
+  width: 100;
+  height: 100px;
+  object-fit: cover;
 }
 .review .star {
   display: flex;

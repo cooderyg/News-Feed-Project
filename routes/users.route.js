@@ -18,7 +18,7 @@ router.post('/signin', signInValidation, async (req, res) => {
 
     if (!result) return res.status(412).json({ message: '아이디와 비밀번호가 일치하지 않습니다.' });
 
-    req.session.user = { email: result.email, name: result.name };
+    req.session.user = { email: result.email, name: result.name, userId: result.userId };
     return res.status(201).json({ message: '로그인 성공' });
   } catch (e) {
     console.error(e);

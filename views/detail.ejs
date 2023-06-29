@@ -12,66 +12,29 @@
     <script src="/js/detail.js" defer></script>
   </head>
   <body>
-    <header>
-      <div class="wrap">
-        <h1><a href="/"></a></h1>
-        <div>
-          <a class="login" href="/login">로그인</a>
-        </div>
-      </div>
-    </header>
+    <%- include('includes/header') %>
     <main>
       <section class="thumbnail">
-        <img src="https://www.shutterstock.com/ko/blog/wp-content/uploads/sites/17/2018/11/shutterstock_1068672764.jpg" alt="" />
+        <!-- 이미지삽입 -->
       </section>
       <section class="place">
         <h1 class="title">록갈비 신림점</h1>
         <div class="like">
-          <i class="fa fa-heart" aria-hidden="true"></i>
+          <i class="fa fa-heart-o" aria-hidden="true"></i>
         </div>
-        <ul>
-          <li>
-            <span>주소</span>
-            <span>부산광역시 해운대구 달맞이길 239-16</span>
-          </li>
-          <li>
-            <span>전화번호</span>
-            <span>051-746-0705</span>
-          </li>
-          <li>
-            <span>음식 종류</span>
-            <span>카페 / 디저트</span>
-          </li>
-          <li>
-            <span>가격대</span>
-            <span>만원 ~ 2만원</span>
-          </li>
-          <li>
-            <span>영업시간</span>
-            <span>10:30 ~ 22:00</span>
-          </li>
+        <ul class="info">
+          <!-- li데이터삽입 -->
           <li>
             <span class="menu-title">메뉴</span>
             <ul class="menu">
-              <li>
-                <span>양념 쪽갈비</span>
-                <span>16,000원</span>
-              </li>
-              <li>
-                <span>매운 쪽갈비</span>
-                <span>16,000원</span>
-              </li>
-              <li>
-                <span>날치알 주먹밥</span>
-                <span>4,000원</span>
-              </li>
+              <!-- 데이터삽입 -->
             </ul>
           </li>
         </ul>
       </section>
       <section class="review">
         <div class="title-container">
-          <h2>리뷰 5개</h2>
+          <h2 class="review-count">리뷰 5개</h2>
           <div class="review-write">
             <span>리뷰 작성하기</span>
             <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -102,109 +65,8 @@
             </div>
           </div>
         </div>
-        <ul>
-          <li>
-            <div class="review-container">
-              <div class="profile">
-                <img src="https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687943098969-profile.png" alt="" />
-                <div>인생이 막창이네</div>
-              </div>
-              <div class="label">
-                <p>2023-03-01</p>
-                <p>단호박빙수, 오미자에이드부산에 있는 고즈넉한 한국식 카페 비비비당! 언덕 위에 위치하고있는만큼, 바다가 펼쳐진 뷰가 정말 좋아요. 매장 분위기도 차분한 한식 분위기라 바다와 너무 잘어울려요 ㅎㅎ단호박빙수, 정말 독특한데 맛있고 계속 당기는 맛!</p>
-                <img src="" alt="" />
-              </div>
-              <div class="star">
-                <div>5</div>
-                <i class="fa fa-star" aria-hidden="true"></i>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="review-container">
-              <div class="profile">
-                <img src="https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687943098969-profile.png" alt="" />
-                <div>인생이 막창이네</div>
-              </div>
-              <div class="label">
-                <p>2023-03-01</p>
-                <p>단호박빙수, 오미자에이드부산에 있는 고즈넉한 한국식 카페 비비비당! 언덕 위에 위치하고있는만큼, 바다가 펼쳐진 뷰가 정말 좋아요. 매장 분위기도 차분한 한식 분위기라 바다와 너무 잘어울려요 ㅎㅎ단호박빙수, 정말 독특한데 맛있고 계속 당기는 맛!</p>
-                <img src="" alt="" />
-              </div>
-              <div class="star">
-                <div>5</div>
-                <i class="fa fa-star" aria-hidden="true"></i>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="review-container">
-              <div class="profile">
-                <img src="https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687943098969-profile.png" alt="" />
-                <div>인생이 막창이네</div>
-              </div>
-              <div class="label">
-                <p>2023-03-01</p>
-                <p>단호박빙수, 오미자에이드부산에 있는 고즈넉한 한국식 카페 비비비당! 언덕 위에 위치하고있는만큼, 바다가 펼쳐진 뷰가 정말 좋아요. 매장 분위기도 차분한 한식 분위기라 바다와 너무 잘어울려요 ㅎㅎ단호박빙수, 정말 독특한데 맛있고 계속 당기는 맛!</p>
-                <img src="" alt="" />
-              </div>
-              <div class="star">
-                <div>5</div>
-                <i class="fa fa-star" aria-hidden="true"></i>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="review-container">
-              <div class="profile">
-                <img src="https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687943098969-profile.png" alt="" />
-                <div>인생이 막창이네</div>
-              </div>
-              <div class="label">
-                <p>2023-03-01</p>
-                <p>단호박빙수, 오미자에이드부산에 있는 고즈넉한 한국식 카페 비비비당! 언덕 위에 위치하고있는만큼, 바다가 펼쳐진 뷰가 정말 좋아요. 매장 분위기도 차분한 한식 분위기라 바다와 너무 잘어울려요 ㅎㅎ단호박빙수, 정말 독특한데 맛있고 계속 당기는 맛!</p>
-                <img src="" alt="" />
-              </div>
-              <div class="star">
-                <div>5</div>
-                <i class="fa fa-star" aria-hidden="true"></i>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="review-container">
-              <div class="profile">
-                <img src="https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687943098969-profile.png" alt="" />
-                <div>인생이 막창이네</div>
-              </div>
-              <div class="label">
-                <p>2023-03-01</p>
-                <p>단호박빙수, 오미자에이드부산에 있는 고즈넉한 한국식 카페 비비비당! 언덕 위에 위치하고있는만큼, 바다가 펼쳐진 뷰가 정말 좋아요. 매장 분위기도 차분한 한식 분위기라 바다와 너무 잘어울려요 ㅎㅎ단호박빙수, 정말 독특한데 맛있고 계속 당기는 맛!</p>
-                <img src="" alt="" />
-              </div>
-              <div class="star">
-                <div>5</div>
-                <i class="fa fa-star" aria-hidden="true"></i>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="review-container">
-              <div class="profile">
-                <img src="https://young-gyu-bucket.s3.ap-northeast-2.amazonaws.com/image/review/1687943098969-profile.png" alt="" />
-                <div>인생이 막창이네</div>
-              </div>
-              <div class="label">
-                <p>2023-03-01</p>
-                <p>단호박빙수, 오미자에이드부산에 있는 고즈넉한 한국식 카페 비비비당! 언덕 위에 위치하고있는만큼, 바다가 펼쳐진 뷰가 정말 좋아요. 매장 분위기도 차분한 한식 분위기라 바다와 너무 잘어울려요 ㅎㅎ단호박빙수, 정말 독특한데 맛있고 계속 당기는 맛!</p>
-                <img src="" alt="" />
-              </div>
-              <div class="star">
-                <div>5</div>
-                <i class="fa fa-star" aria-hidden="true"></i>
-              </div>
-            </div>
-          </li>
+        <ul class="review-ul">
+          <!-- 리뷰 데이터 삽입 -->
         </ul>
       </section>
     </main>

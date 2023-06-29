@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Places } = require('../models');
-const { Menus } = require('../models');
+const { Places, Reviews, ReviewImages, Menus, Users } = require('../models');
 const { Op } = require('sequelize');
 
 // 맛집 등록 ok
@@ -91,16 +90,29 @@ router.get('/:placeId', async (req, res) => {
   const { placeId } = req.params;
   try {
     const place = await Places.findOne({
-      where: { placeId: placeId },
+      where: { placeId: +placeId },
       include: [
         {
           model: Menus,
-          as: 'Menus',
+        },
+        {
+          model: Reviews,
+          include: [
+            {
+              model: Users,
+              attributes: ['name'],
+            },
+            {
+              model: ReviewImages,
+              attributes: ['imageUrl'],
+            },
+          ],
         },
       ],
     });
     res.status(200).json(place);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: error });
   }
 });
