@@ -42,7 +42,7 @@ likeButton.addEventListener('click', function () {
       .catch((error) => {
         const confirm = window.confirm('로그인 이후 사용가능합니다. 로그인 하시겠습니까?');
         if (confirm) {
-          location.href = '/login';
+          location.href = `/login?redirect=${window.location}`;
         }
 
         console.log('오류가 발생했습니다:', error);

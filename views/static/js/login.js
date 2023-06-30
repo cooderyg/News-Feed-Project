@@ -2,6 +2,9 @@ const userEmail = document.getElementById('userEmail');
 const userPassword = document.getElementById('userPassword');
 const loginBtn = document.getElementById('loginBtn');
 
+const url = new URL(window.location);
+const urlParams = url.searchParams;
+
 loginBtn.addEventListener('click', async () => {
   const api = await fetch('./api/users/signin', {
     method: 'POST',
@@ -10,7 +13,12 @@ loginBtn.addEventListener('click', async () => {
   });
 
   const result = await api.json();
-  if (result.message == '로그인 성공') return (window.location.href = '../');
+
+  if (urlParams.get('redirect')) {
+    if (result.message == '로그인 성공') return (window.location.href = urlParams.get('redirect'));
+  } else {
+    if (result.message == '로그인 성공') return (window.location.href = '/');
+  }
 
   alert(result.message);
 });
