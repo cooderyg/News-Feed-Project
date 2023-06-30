@@ -36,7 +36,7 @@ const getCategories = async () => {
                 <img
                   src="${info.Places[0].imageUrl}"
                   alt="" style="border-radius : 10px; filter : brightness(0.7);" />
-                <p>${info.name} 맛집 베스트</p>
+                <p>${info.name} 맛집 베스트 Top 20</p>
               </a>
     </div>`;
   });

@@ -151,7 +151,8 @@ h1 > a {
 }
 .review .review-img {
   display: inline-block;
-  width: 100;
+  margin-top: 20px;
+  width: 100px;
   height: 100px;
   object-fit: cover;
 }
@@ -278,6 +279,9 @@ h1 > a {
 .rating__star:hover {
   filter: drop-shadow(1px 1px 4px gold);
 }
+.upload-container {
+  position: relative;
+}
 
 .upload-container .upload {
   font-size: 60px;
@@ -286,9 +290,20 @@ h1 > a {
 }
 .upload-container img {
   display: block;
-  padding-top: 20px;
-  max-height: 100px;
+  padding-top: 50px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
+#modal .modal-content button.img-update-btn {
+  position: absolute;
+  top: -23px;
+  right: -64px;
+  font-size: 12px;
+  width: 80px;
+  height: 32px;
+}
+
 .upload-input {
   display: none;
 }
