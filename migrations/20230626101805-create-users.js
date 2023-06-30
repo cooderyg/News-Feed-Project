@@ -39,6 +39,10 @@ module.exports = {
         allowNull: true,
         type: DataTypes.STRING,
       },
+      isEmailValid: {
+        allowNull: true,
+        type: DataTypes.BOOLEAN,
+      },
     });
   },
   async down(queryInterface, Sequelize) {

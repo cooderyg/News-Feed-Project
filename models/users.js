@@ -47,6 +47,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
         type: DataTypes.STRING,
       },
+      isEmailValid: {
+        allowNull: true,
+        type: DataTypes.BOOLEAN,
+      },
       createdAt: {
         allowNull: false, // NOT NULL
         type: DataTypes.DATE,
