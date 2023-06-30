@@ -2,7 +2,7 @@ const best12List = document.getElementById('best12list');
 const categoriesList = document.getElementById('categoriesList');
 const searchBtn = document.querySelector('.searchBtn');
 const searchBox = document.getElementById('searchBox');
-
+let lastLi;
 const getBest12 = async () => {
   const api = await fetch('./api/places/main/best12');
   const result = await api.json();
@@ -20,6 +20,9 @@ const getBest12 = async () => {
               </a>
             </li>`;
   });
+  lastLi = document.querySelector('.feed-container > li:last-child ');
+  //첫 번째 관찰 시작
+  io.observe(lastLi);
 };
 
 const getCategories = async () => {
@@ -61,3 +64,49 @@ searchBox.addEventListener('keypress', (e) => (e.keyCode == 13 ? search() : null
 getCategories();
 getBest12();
 searchBox.focus();
+
+// 무한스크롤
+let pageCount = 1;
+const io = new IntersectionObserver((entries, observer) => {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      pageCount++;
+      const ioFetch = async () => {
+        const res = await fetch(`/api/places?page=${pageCount}`);
+        const rows = await res.json();
+
+        // template.js로 템플릿 제작 순회
+        let temp = rows.map((row) => {
+          return `
+          <li class="feed-item">
+            <a href="/detail/${row.placeId}">
+              <div class="img-container">
+                <img src="${row.imageUrl}" style="border-radius : 10px;" />
+              </div>
+              <h3>
+                ${row.name}
+              </h3>
+              <p style="color:gray;">${row.foodType}</p>
+            </a>
+          </li>`;
+        });
+
+        // 배열 정리후 데이터바인딩
+        let joinTemp = temp.join('');
+
+        best12List.insertAdjacentHTML('beforeend', joinTemp);
+
+        // 기존에 사용한 마지막 li 관찰 종료
+        io.unobserve(lastLi);
+
+        // 템플릿 추가후 바뀐 마지막 li 재할당
+        lastLi = document.querySelector('.feed-container > li:last-child ');
+
+        // 새로운 마지막 li에 가시성관찰
+        io.observe(lastLi);
+      };
+      // 무한스크롤 패칭
+      ioFetch();
+    }
+  });
+});

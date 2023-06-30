@@ -34,7 +34,7 @@ router.post('/:placeCategoryId', async (req, res) => {
   }
 });
 
-const placePerPage = 20; // 페이지 당 항목 수
+const placePerPage = 12; // 페이지 당 항목 수
 // 맛집 전체 조회 "star"기준으로 내림차순 정렬
 router.get('/', async (req, res) => {
   const { page } = req.query;

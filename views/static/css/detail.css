@@ -98,11 +98,16 @@ h1 > a {
   flex: 1;
 }
 
+#map {
+  margin-top: 48px;
+  height: 300px;
+}
+
 /* review */
 .review {
   max-width: 800px;
   margin: 0 auto;
-  padding-top: 40px;
+  padding: 60px 0;
 }
 .review .title-container {
   display: flex;
@@ -286,4 +291,15 @@ h1 > a {
 }
 .upload-input {
   display: none;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9d9d9d;
+  height: 300px;
+}
+footer address {
+  color: #222;
 }
