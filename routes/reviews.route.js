@@ -90,16 +90,24 @@ router.put('/:reviewId', authMiddleware, async (req, res) => {
       },
     }
   );
+
   // req.body에 imageUrl 있다면
   // 리뷰이미지테이블에 리뷰id where 조건 같은 이미지 찾고 url수정
   if (imageUrl) {
     try {
-      ReviewImages.update(
+      const updateImg = await ReviewImages.update(
         { imageUrl },
         {
           where: { ReviewId: reviewId },
         }
       );
+      // console.log();
+      if (!updateImg[0]) {
+        await ReviewImages.create({
+          ReviewId: reviewId,
+          imageUrl,
+        });
+      }
     } catch (error) {
       res.status(500).json({ message: error });
     }

@@ -112,7 +112,14 @@ const detailpage = async () => {
       const { content, rating } = isCreated[0];
       const imageUrl = isCreated[0].ReviewImages.length ? isCreated[0].ReviewImages[0].imageUrl : null;
       if (imageUrl) {
-        uploadContainerEl.innerHTML = ` <img src="${imageUrl}" />  `;
+        uploadContainerEl.innerHTML = ` 
+        <img src="${imageUrl}" />
+        <button class="img-update-btn">이미지 수정</button>
+        `;
+        const imgUpdateBtnEl = document.querySelector('.img-update-btn');
+        imgUpdateBtnEl.addEventListener('click', () => {
+          uploadInputEl.click();
+        });
       }
       const starEls = ratingEl.querySelectorAll('.fa');
       starEls[rating - 1].click();
@@ -219,7 +226,12 @@ uploadEl.addEventListener('click', () => {
 //   console.log(url);
 //   uploadContainerEl.innerHTML = `
 //   <img src="${url.data}" />
+//   <button class="img-update-btn">이미지 수정</button>
 //   `;
+//   const imgUpdateBtnEl = document.querySelector('.img-update-btn');
+//   imgUpdateBtnEl.addEventListener('click', () => {
+//     uploadInputEl.click();
+//   });
 // });
 
 reviewBtn.addEventListener('click', async () => {
