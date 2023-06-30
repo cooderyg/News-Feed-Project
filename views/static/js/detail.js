@@ -112,7 +112,14 @@ const detailpage = async () => {
       const { content, rating } = isCreated[0];
       const imageUrl = isCreated[0].ReviewImages.length ? isCreated[0].ReviewImages[0].imageUrl : null;
       if (imageUrl) {
-        uploadContainerEl.innerHTML = ` <img src="${imageUrl}" />  `;
+        uploadContainerEl.innerHTML = ` 
+        <img src="${imageUrl}" />
+        <button class="img-update-btn">이미지 수정</button>
+        `;
+        const imgUpdateBtnEl = document.querySelector('.img-update-btn');
+        imgUpdateBtnEl.addEventListener('click', () => {
+          uploadInputEl.click();
+        });
       }
       const starEls = ratingEl.querySelectorAll('.fa');
       starEls[rating - 1].click();
@@ -198,37 +205,42 @@ uploadEl.addEventListener('click', () => {
   uploadInputEl.click();
 });
 
-// uploadInputEl.addEventListener('change', async (e) => {
-//   console.log(e.target.files[0].type);
-//   const file = e.target.files[0];
-//   if (file.size > 1 * 1024 * 1024) {
-//     alert('파일용량은 최대 1mb입니다.');
-//     return;
-//   }
-//   if (!file.type.includes('jpeg') && !file.type.includes('png')) {
-//     alert('jpeg 또는 png 파일만 업로드 가능합니다!');
-//     return;
-//   }
-//   let formData = new FormData();
-//   formData.append('photo', file);
-//   const response = await fetch('/api/files', {
-//     method: 'POST',
-//     body: formData,
-//   });
-//   url = await response.json();
-//   console.log(url);
-//   uploadContainerEl.innerHTML = `
-//   <img src="${url.data}" />
-//   `;
-// });
+uploadInputEl.addEventListener('change', async (e) => {
+  console.log(e.target.files[0].type);
+  const file = e.target.files[0];
+  if (file.size > 1 * 1024 * 1024) {
+    alert('파일용량은 최대 1mb입니다.');
+    return;
+  }
+  if (!file.type.includes('jpeg') && !file.type.includes('png')) {
+    alert('jpeg 또는 png 파일만 업로드 가능합니다!');
+    return;
+  }
+  let formData = new FormData();
+  formData.append('photo', file);
+  const response = await fetch('/api/files', {
+    method: 'POST',
+    body: formData,
+  });
+  url = await response.json();
+  console.log(url);
+  uploadContainerEl.innerHTML = `
+  <img src="${url.data}" />
+  <button class="img-update-btn">이미지 수정</button>
+  `;
+  const imgUpdateBtnEl = document.querySelector('.img-update-btn');
+  imgUpdateBtnEl.addEventListener('click', () => {
+    uploadInputEl.click();
+  });
+});
 
 reviewBtn.addEventListener('click', async () => {
   const content = reviewText.value;
   const rating = ratingEl.querySelectorAll('.fa-star').length;
   const form = JSON.stringify({
     content,
-    // imageUrl: url ? url.data : null,
-    imageUrl: 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/639648_1476361064493618.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',
+    imageUrl: url ? url.data : null,
+    // imageUrl: 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/639648_1476361064493618.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',
     rating,
   });
   if (reviewText.value.length < 10) {
