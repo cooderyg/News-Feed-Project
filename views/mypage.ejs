@@ -1,35 +1,27 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>piggy-path mypage 마이페이지</title>
+    <%- include('includes/favicon') %>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/mypage.css" />
+    <script src="/js/mypage.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>piggy-path mypage 마이페이지</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel="stylesheet" href="/css/mypage.css">
-  <script src="/js/mypage.js" defer></script>
-</head>
-
-<body>
-  <%- include('includes/header') %>
+  <body>
+    <%- include('includes/header') %>
     <div class="profile">
       <div class="box">
-        <% if(profileImage) { %>
-          <img src="<%= profileImage %>" alt="" class="user-image" />
-          <% } else { %>
-            <img src="/img/profile.jpg" alt="" class="user-image" />
-            <% } %>
+        <img class="box-img" src="/img/profile.jpg" alt="" class="user-image" />
       </div>
       <div class="user-info">
-        <h1 style="font-size: 24px; margin-bottom: 10px">
-          <%= name %>
-        </h1>
-        <h2 style="font-size: 16px; margin-bottom: 10px">
-          <%= introduction %>
-        </h2>
+        <h1 class="profile-name" style="font-size: 24px; margin-bottom: 10px"></h1>
+        <h2 class="profile-introduction" style="font-size: 16px; margin-bottom: 10px"></h2>
         <button class="profile-write">프로필 수정</button>
       </div>
     </div>
@@ -46,29 +38,24 @@
           <h2>프로필 수정</h2>
           <p>piggypath 대표 프로필과 닉네임을 수정해보세요</p>
           <div class="profile">
-            <% if(profileImage) { %>
-              <img src="<%= profileImage %>" alt="" />
-              <% } else { %>
-                <img src="/img/profile.jpg" alt="" />
-                <% } %>
-
+            <img class="profile-img" src="/img/profile.jpg" alt="" />
           </div>
           <div class="upload-picture">
+            <button class="picture-btn">이미지 변경</button>
             <input class="picture-modify" type="file" accept="image/jpeg, image/png" />
-            <button class="picture-delete">사진 삭제</button>
+            <button class="picture-delete">기본 프로필적용</button>
           </div>
           <h3>닉네임</h3>
-          <textarea class="name-text" placeholder="이름을 수정해보세요"><%= name %></textarea>
+          <textarea class="name-text" placeholder="이름을 수정해보세요"></textarea>
           <h3>소개</h3>
-          <textarea class="introduce-text" placeholder="소개 최대 30자 입력 가능합니다"><%= introduction %></textarea>
+          <textarea class="introduce-text" placeholder="소개 최대 30자 입력 가능합니다"></textarea>
           <button class="profile-btn">적용</button>
         </div>
       </div>
     </div>
 
-
     <h1 class="title">
-      <span>"<%= name %>"</span>
+      <span class="title-name"></span>
       님이 좋아하는 맛집 총 <span id="likesCount">0</span>개
     </h1>
 
@@ -76,6 +63,5 @@
     <section class="pageNumList">
       <div class="buttons"></div>
     </section>
-</body>
-
+  </body>
 </html>

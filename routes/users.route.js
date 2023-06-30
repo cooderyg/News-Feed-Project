@@ -46,4 +46,36 @@ router.post('/signup', signUpValidation, async (req, res) => {
   }
 });
 
+router.get('/', authMiddleware, async (req, res) => {
+  try {
+    const { userId } = req.session.user;
+    const user = await Users.findOne({ where: { userId } });
+    res.status(200).json({ user });
+  } catch (e) {
+    console.error(e);
+    return res.status(400).json({ message: '오류가 발생하였습니다.' });
+  }
+});
+
+router.put('/', authMiddleware, async (req, res) => {
+  try {
+    const { name, introduction, profileImage } = req.body;
+    const { userId } = req.session.user;
+
+    const result = await Users.update(
+      { name, introduction, profileImage },
+      {
+        where: {
+          userId,
+        },
+      }
+    );
+    console.log(result);
+    res.status(200).json({ message: '수정에 성공하였습니다.' });
+  } catch (e) {
+    console.error(e);
+    return res.status(400).json({ message: '오류가 발생하였습니다.' });
+  }
+});
+
 module.exports = router;

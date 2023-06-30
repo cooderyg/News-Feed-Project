@@ -1,45 +1,44 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>piggy-path 로그인</title>
+    <%- include('includes/favicon') %>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="/js/signup.js" defer></script>
+    <link rel="stylesheet" href="/css/signup.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>piggy-path 로그인</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <script src="/js/signup.js" defer></script>
-  <link rel="stylesheet" href="/css/signup.css" />
-</head>
-
-<body>
-  <header>
-    <a href="/"><img src="/img/logo-auth.png" alt="" /></a>
-  </header>
-  <div class="login-form">
-    <h2>회원가입</h2>
-    <div class="form-container">
-      <div class="input-wrapper">
-        <label>이메일</label>
-        <input type="email" id="userEmail" placeholder="이메일을 입력해주세요." />
+  <body>
+    <header>
+      <a href="/"><img src="/img/logo-auth.png" alt="" /></a>
+    </header>
+    <div class="login-form">
+      <h2>회원가입</h2>
+      <div class="form-container">
+        <div class="input-wrapper">
+          <label>이메일</label>
+          <input type="email" id="userEmail" placeholder="이메일을 입력해주세요." />
+        </div>
+        <div class="input-wrapper">
+          <label>이름</label>
+          <input type="text" id="userName" placeholder="이름을 입력해주세요." />
+        </div>
+        <div class="input-wrapper">
+          <label>비밀번호</label>
+          <input type="password" id="userPassword" placeholder="비밀번호를 입력해주세요." />
+        </div>
+        <div class="input-wrapper">
+          <label>확인 비밀번호</label>
+          <input type="password" id="userConfirmPassword" placeholder="확인 비밀번호를 입력해주세요." />
+        </div>
+        <button id="signUpBtn">회원가입</button>
       </div>
-      <div class="input-wrapper">
-        <label>이름</label>
-        <input type="text" id="userName" placeholder="이름을 입력해주세요." />
-      </div>
-      <div class="input-wrapper">
-        <label>비밀번호</label>
-        <input type="password" id="userPassword" placeholder="비밀번호를 입력해주세요." />
-      </div>
-      <div class="input-wrapper">
-        <label>확인 비밀번호</label>
-        <input type="password" id="userConfirmPassword" placeholder="확인 비밀번호를 입력해주세요." />
-      </div>
-      <button id="signUpBtn">회원가입</button>
     </div>
-  </div>
-  <a href="/signIn"></a>
-</body>
-
+    <a href="/signIn"></a>
+  </body>
 </html>
