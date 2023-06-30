@@ -34,6 +34,21 @@ router.get('/user/mylike', authMiddleware, async (req, res) => {
   res.status(201).json(result);
 });
 
+router.get('/detail/:placeId', authMiddleware, async (req, res) => {
+  try {
+    const { placeId } = req.params;
+    const { userId } = req.session.user;
+    const like = await Likes.findOne({
+      where: { UserId: userId, PlaceId: +placeId },
+    });
+    console.log(like);
+    res.status(200).json(like);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: '조회에 실패했습니다.' });
+  }
+});
+
 // 좋아요 수 확인하기
 router.get('/:placeId', async (req, res) => {
   const likes = await Likes.count({

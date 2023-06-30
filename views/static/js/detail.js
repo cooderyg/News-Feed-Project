@@ -6,6 +6,17 @@ const detailpage = async () => {
   const result = await response.json();
   console.log(result);
   const { place: data, userId } = result;
+  if (userId) {
+    const likeResponse = await fetch(`/api/likes/detail/${placeId}`);
+    const likeResult = await likeResponse.json();
+    console.log(likeResult);
+    const heart = document.querySelector('#heart');
+    if (likeResult) {
+      heart.classList.remove('fa-heart-o');
+      heart.classList.add('fa-heart');
+    }
+  }
+
   const thumbnailEl = document.querySelector('.thumbnail');
   const titleEl = document.querySelector('.title');
   const infoEl = document.querySelector('.info');
