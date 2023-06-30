@@ -9,6 +9,7 @@ const { Users } = require('../models');
 const { signInValidation, signUpValidation, editPasswordValidation } = require('../middlewares/Validations/usersValidation');
 const authMiddleware = require('../middlewares/auth-middleware');
 const nodemailer = require('nodemailer');
+const { off } = require('process');
 
 let transporter = nodemailer.createTransport({
   // 사용하고자 하는 서비스, gmail계정으로 전송할 예정이기에 'gmail'
@@ -56,28 +57,46 @@ router.post('/signup', signUpValidation, async (req, res) => {
     const { email, password, name } = req.body;
     const passwordToCrypto = crypto.pbkdf2Sync(password, SECRET_KEY.toString('hex'), 11524, 64, 'sha512').toString('hex');
     await Users.create({ email, name, password: passwordToCrypto, isEmailValid: false });
-    const url = `http://${HOST}/users?email=${email}`;
-    let info = await transporter.sendMail({
+    const url = `http://${HOST}/api/users?email=${email}`;
+
+    await transporter.sendMail({
       // 보내는 곳의 이름과, 메일 주소를 입력
       from: `"piggy path" <${NODEMAILER_USER}>`,
       // 받는 곳의 메일 주소를 입력
       to: email,
       // 보내는 메일의 제목을 입력
-      subject: '테스트 발송입니다.',
+      subject: '[piggy path] 회원가입 인증 메일입니다.',
       // 보내는 메일의 내용을 입력
       // text: 일반 text로 작성된 내용
       // html: html로 작성된 내용
-      text: '텍스트 테스트입니다',
       html: `<form action="${url}" method="POST">
       <button>가입확인</button>
     </form>`,
     });
-    console.log(info);
 
-    return res.status(201).json({ message: '회원가입이 완료되었습니다.' });
+    return res.status(201).json({ message: '회원가입이 완료되었습니다.\n단, 사용자의 이메일 인증 후 로그인이 가능합니다.\n메일을 확인해 주세요.' });
   } catch (e) {
     console.error(e);
     return res.status(400).json({ message: '오류가 발생하였습니다.' });
+  }
+});
+
+router.post('/', async (req, res) => {
+  try {
+    const { email } = req.query;
+    if (!email) return res.status(412).render('authResult', { message: '비정상적인 접근입니다.???' });
+
+    const emailValid = await Users.findOne({ where: { email: email }, attributes: ['email', 'isEmailValid'] });
+
+    if (!emailValid) return res.status(412).render('authResult', { message: '해당 이메일은 요청된 이메일이 아닙니다.' });
+    if (emailValid.isEmailValid) return res.status(412).render('authResult', { message: '이미 인증된 이메일 입니다.' });
+
+    await Users.update({ isEmailValid: true }, { where: { email: email } });
+
+    return res.status(201).render('authResult', { message: '인증이 완료되었습니다.' });
+  } catch (err) {
+    console.error(err);
+    return res.status(400).render('authResult', { message: '오류가 발생하였습니다.' });
   }
 });
 

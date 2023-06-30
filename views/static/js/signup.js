@@ -5,6 +5,9 @@ const userConfirmPassword = document.getElementById('userConfirmPassword');
 const signUpBtn = document.getElementById('signUpBtn');
 
 signUpBtn.addEventListener('click', async () => {
+  if (signUpBtn.classList.contains('active')) return;
+
+  signUpBtn.classList.toggle('active');
   const api = await fetch('./api/users/signup', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -13,6 +16,8 @@ signUpBtn.addEventListener('click', async () => {
 
   const result = await api.json();
   alert(result.message);
+
+  signUpBtn.classList.toggle('active');
 
   if (result.message == '회원가입이 완료되었습니다.') return (window.location.href = './login');
 });

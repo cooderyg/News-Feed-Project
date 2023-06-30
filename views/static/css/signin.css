@@ -80,3 +80,8 @@ header a {
   color: #ff2e00;
   margin-top: 20px;
 }
+
+.authresult {
+  margin-bottom: 40px;
+  font-weight: 600;
+}
