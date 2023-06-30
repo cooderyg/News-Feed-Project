@@ -56,6 +56,13 @@ router.post('/signup', signUpValidation, async (req, res) => {
   try {
     const { email, password, name } = req.body;
     const passwordToCrypto = crypto.pbkdf2Sync(password, SECRET_KEY.toString('hex'), 11524, 64, 'sha512').toString('hex');
+
+    const userValid = await Users.findOne({ where: { email: email } });
+    const authEmailValid = await Users.findOne({ where: { email: email, isEmailValid: false } });
+
+    if (authEmailValid) return res.status(412).json({ message: '해당 이메일은 이미 가입되어있으나, 인증되지 않았습니다.\n메일을 확인해 주세요.' });
+    if (userValid) return res.status(412).json({ message: '이미 가입된 이메일입니다.' });
+
     await Users.create({ email, name, password: passwordToCrypto, isEmailValid: false });
     const url = `http://${HOST}/api/users?email=${email}`;
 
