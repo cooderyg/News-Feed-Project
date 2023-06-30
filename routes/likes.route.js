@@ -45,7 +45,7 @@ router.get('/:placeId', async (req, res) => {
 
 //좋아요 만들기
 router.post('/:placeId', authMiddleware, async (req, res) => {
-  const { userId } = res.locals.user;
+  const { userId } = req.session.user;
   const { placeId } = req.params;
 
   try {
