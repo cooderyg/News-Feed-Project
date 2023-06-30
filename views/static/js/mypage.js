@@ -1,3 +1,4 @@
+const editPassword = document.getElementById('editPassword');
 const likesList = document.getElementById('likesList');
 const likesCount = document.getElementById('likesCount');
 const pageNumBox = document.querySelector('.buttons');
@@ -47,8 +48,6 @@ const getLike = async () => {
     </div>`;
   });
 
-  console.log(page);
-
   if (page.min !== 1) {
     pageNumBox.innerHTML += ` <a class="button" href="?page=${page.min - 1}"><</a>`;
   }
@@ -70,6 +69,10 @@ const getLike = async () => {
 };
 
 getLike();
+
+editPassword.addEventListener('click', () => {
+  window.location.href = '/editpassword';
+});
 
 //modal 영역
 const modal = document.getElementById('modal');

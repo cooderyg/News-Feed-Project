@@ -11,12 +11,52 @@ body {
   align-items: center;
 }
 
+.wrap {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1400px;
+}
+
 /* 유저 프로필 */
 .profile {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin: 87px 0px 50px 0px;
+}
+
+.profileform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 87px 0px 50px 0px;
+  gap: 20px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.inputPassword {
+  max-width: 500px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 100px;
+  padding-left: 20px;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.buttonPassword {
+  width: 100%;
+  margin: 40px 0 60px;
+  height: 50px;
+  border-radius: 100px;
+  background-color: #ff2e00;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  transition: 0.2s;
+  cursor: pointer;
 }
 
 .box {
@@ -48,13 +88,13 @@ body {
 }
 
 .user-info button {
-  width: 100px;
   background-color: #ff2e00;
   color: #ffffff;
   border-radius: 20px;
   border: none;
   font-size: 15px;
   cursor: pointer;
+  padding: 5px 15px 5px 15px;
 }
 
 .user-info button:hover {

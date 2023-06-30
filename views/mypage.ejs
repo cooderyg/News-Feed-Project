@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>piggy-path mypage 마이페이지</title>
-    <%- include('includes/favicon') %>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>piggy-path mypage 마이페이지</title>
+  <%- include('includes/favicon') %>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/css/mypage.css" />
     <script src="/js/mypage.js" defer></script>
-  </head>
+</head>
 
-  <body>
-    <%- include('includes/header') %>
+<body>
+  <%- include('includes/header') %>
     <div class="profile">
       <div class="box">
         <img class="box-img" src="/img/profile.jpg" alt="" class="user-image" />
@@ -22,7 +23,8 @@
       <div class="user-info">
         <h1 class="profile-name" style="font-size: 24px; margin-bottom: 10px"></h1>
         <h2 class="profile-introduction" style="font-size: 16px; margin-bottom: 10px"></h2>
-        <button class="profile-write">프로필 수정</button>
+        <button class="profile-write btn">프로필 수정</button>
+        <button id="editPassword">비밀번호 변경</button>
       </div>
     </div>
 
@@ -63,5 +65,6 @@
     <section class="pageNumList">
       <div class="buttons"></div>
     </section>
-  </body>
+</body>
+
 </html>

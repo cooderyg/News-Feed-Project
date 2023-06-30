@@ -27,6 +27,10 @@ router.get('/mypage', (req, res) => {
   if (req.session.user) return res.render('mypage', { ...req.session.user, login: 1 });
   return res.redirect('/');
 });
+router.get('/editpassword', (req, res) => {
+  if (req.session.user) return res.render('editpassword', { ...req.session.user, login: 1 });
+  return res.redirect('/');
+});
 router.get('/categories/:categoryId', async (req, res) => {
   try {
     const { categoryId } = req.params;

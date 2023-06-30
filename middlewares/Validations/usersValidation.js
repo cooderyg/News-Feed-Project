@@ -59,6 +59,34 @@ const userValidation = {
     }
 
     next();
+  }, //currentPassword, editPassword, editConfirmPassword
+  editPasswordValidation: async (req, res, next) => {
+    const body = req.body;
+    const schema = Joi.object().keys({
+      currentPassword: Joi.string()
+        .empty()
+        .min(8)
+        .max(20)
+        .regex(/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])/)
+        .required()
+        .messages(user.currentPassword),
+      editPassword: Joi.string()
+        .empty()
+        .min(8)
+        .max(20)
+        .regex(/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])/)
+        .required()
+        .messages(user.editPassword),
+      editConfirmPassword: Joi.string().valid(Joi.ref('editPassword')).required().messages(user.editConfirmPassword),
+    });
+
+    try {
+      await schema.validateAsync(body);
+    } catch (err) {
+      return res.status(412).json({ message: err.message });
+    }
+
+    next();
   },
 };
 

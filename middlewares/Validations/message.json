@@ -25,6 +25,27 @@
       "any.required": "이름을 입력해 주세요.",
       "string.pattern.base": "이름 형식이 올바르지 않습니다.",
       "string.empty": "이름을 입력해 주세요."
+    },
+    "currentPassword": {
+      "string.base": "현재 패스워드는 문자열이어야 합니다.",
+      "any.required": "현재 패스워드를 입력해 주세요.",
+      "string.pattern.base": "현재 패스워드 형식이 올바르지 않습니다.",
+      "string.min": "현재 패스워드는 최소 8자 이상 입력해 주세요.",
+      "string.max": "현재 패스워드는 최대 20자 이내로 입력해 주세요.",
+      "string.empty": "현재 패스워드를 입력해 주세요."
+    },
+    "editPassword": {
+      "string.base": "새로운 패스워드는 문자열이어야 합니다.",
+      "any.required": "새로운 패스워드를 입력해 주세요.",
+      "string.pattern.base": "새로운 패스워드 형식이 올바르지 않습니다.",
+      "string.min": "새로운 패스워드는 최소 8자 이상 입력해 주세요.",
+      "string.max": "새로운 패스워드는 최대 20자 이내로 입력해 주세요.",
+      "string.empty": "새로운 패스워드를 입력해 주세요."
+    },
+    "editConfirmPassword": {
+      "string.base": "새로운 확인 패스워드는 문자열이어야 합니다.",
+      "any.required": "새로운 확인 패스워드를 입력해 주세요.",
+      "any.only": "입력한 새로운 패스워드와 다릅니다."
     }
   }
 }
