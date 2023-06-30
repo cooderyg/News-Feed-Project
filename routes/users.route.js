@@ -15,11 +15,13 @@ router.post('/signin', signInValidation, async (req, res) => {
     const { email, password } = req.body;
     const passwordToCrypto = crypto.pbkdf2Sync(password, SECRET_KEY.toString('hex'), 11524, 64, 'sha512').toString('hex');
 
-    const result = await Users.findOne({ where: { email: email, password: passwordToCrypto }, attributes: { exclude: ['password'] } });
+    const userValid = await Users.findOne({ where: { email: email, password: passwordToCrypto }, attributes: { exclude: ['password'] } });
+    const isEmailValid = await Users.findOne({ where: { email: email, password: passwordToCrypto, isEmailValid: true }, attributes: { exclude: ['password'] } });
 
-    if (!result) return res.status(412).json({ message: '아이디와 비밀번호가 일치하지 않습니다.' });
+    if (!userValid) return res.status(412).json({ message: '아이디와 비밀번호가 일치하지 않습니다.' });
+    if (!isEmailValid) return res.status(412).json({ message: '해당 계정은 이메일 인증이 이루어지지 않은 계정입니다.\n메일을 확인해 주세요.' });
 
-    req.session.user = result;
+    req.session.user = userValid;
     return res.status(201).json({ message: '로그인 성공' });
   } catch (e) {
     console.error(e);
