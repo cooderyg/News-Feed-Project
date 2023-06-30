@@ -104,28 +104,28 @@ const profileImgEl = document.querySelector('.profile-img');
 const pictureDeleteEl = document.querySelector('.picture-delete');
 let url;
 // 이미지 클라우드 업로드
-// uploadInputEl.addEventListener('change', async (e) => {
-//   console.log(e.target.files[0].type);
-//   const file = e.target.files[0];
-//   if (file.size > 1 * 1024 * 1024) {
-//     alert('파일용량은 최대 1mb입니다.');
-//     return;
-//   }
-//   if (!file.type.includes('jpeg') && !file.type.includes('png')) {
-//     alert('jpeg 또는 png 파일만 업로드 가능합니다!');
-//     return;
-//   }
-//   let formData = new FormData();
-//   formData.append('photo', file);
-//   const response = await fetch('/api/files', {
-//     method: 'POST',
-//     body: formData,
-//   });
-//   const { data } = await response.json();
-//   console.log(data);
-//   url = data;
-//   profileImgEl.setAttribute('src', url);
-// });
+uploadInputEl.addEventListener('change', async (e) => {
+  console.log(e.target.files[0].type);
+  const file = e.target.files[0];
+  if (file.size > 1 * 1024 * 1024) {
+    alert('파일용량은 최대 1mb입니다.');
+    return;
+  }
+  if (!file.type.includes('jpeg') && !file.type.includes('png')) {
+    alert('jpeg 또는 png 파일만 업로드 가능합니다!');
+    return;
+  }
+  let formData = new FormData();
+  formData.append('photo', file);
+  const response = await fetch('/api/files', {
+    method: 'POST',
+    body: formData,
+  });
+  const { data } = await response.json();
+  console.log(data);
+  url = data;
+  profileImgEl.setAttribute('src', url);
+});
 
 pictureBtnEl.addEventListener('click', () => {
   uploadInputEl.click();
@@ -136,8 +136,8 @@ profileBtnEl.addEventListener('click', async () => {
   const form = JSON.stringify({
     name,
     introduction,
-    // profileImage: url ? url : null,
-    profileImage: 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/639648_1476361064493618.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',
+    profileImage: url ? url : null,
+    // profileImage: 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/639648_1476361064493618.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',
   });
   // 수정
   const response = await fetch('/api/users', {
