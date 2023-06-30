@@ -86,7 +86,7 @@ const detailpage = async () => {
   let geocoder = new kakao.maps.services.Geocoder();
 
   // 주소로 좌표를 검색합니다
-  geocoder.addressSearch(`${data.address}`, function (result, status) {
+  geocoder.addressSearch(`${data.address.replace(' 1F', '')}`, function (result, status) {
     // 정상적으로 검색이 완료됐으면
     if (status === kakao.maps.services.Status.OK) {
       let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -122,7 +122,7 @@ const detailpage = async () => {
     <li data-id="${review.reviewId}">
       <div class="review-container">
         <div class="profile">
-          <img src="/img/profile.jpg" alt="" />
+          <img src="${review.User.profileImage ? review.User.profileImage : '/img/profile.jpg'}" alt="" />
           <div>${review.User.name}</div>
         </div>
         <div class="label">

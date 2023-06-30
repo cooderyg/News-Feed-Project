@@ -77,7 +77,7 @@ router.get('/:placeId', async (req, res) => {
           include: [
             {
               model: Users,
-              attributes: ['name', 'userId'],
+              attributes: ['name', 'userId', 'profileImage'],
             },
             {
               model: ReviewImages,
