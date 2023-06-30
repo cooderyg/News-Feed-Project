@@ -41,7 +41,7 @@ router.post('/signup', signUpValidation, async (req, res) => {
     const { email, password, name } = req.body;
     const passwordToCrypto = crypto.pbkdf2Sync(password, SECRET_KEY.toString('hex'), 11524, 64, 'sha512').toString('hex');
 
-    await Users.create({ email, name, password: passwordToCrypto });
+    await Users.create({ email, name, password: passwordToCrypto, isEmailValid: false });
     return res.status(201).json({ message: '회원가입이 완료되었습니다.' });
   } catch (e) {
     console.error(e);
