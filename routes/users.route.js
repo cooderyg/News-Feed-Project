@@ -77,11 +77,12 @@ router.post('/signup', signUpValidation, async (req, res) => {
       // text: 일반 text로 작성된 내용
       // html: html로 작성된 내용
       html: `<form action="${url}" method="POST">
-      <button>가입확인</button>
+      <h2 style="margin: 20px 0">[Piggy Path] 메일확인</h2>
+      <button style=" background-color: #ff2e00; color:#fff; width: 80px; height:40px; border-radius: 20px; border: none;">가입확인</button>
     </form>`,
     });
 
-    return res.status(201).json({ message: '회원가입이 완료되었습니다.\n단, 사용자의 이메일 인증 후 로그인이 가능합니다.\n메일을 확인해 주세요.' });
+    return res.status(201).json({ message: '회원가입이 완료되었습니다.\n단, 사용자의 이메일 인증 후 로그인이 가능합니다.\n메일을 확인해 주세요.', ok: true });
   } catch (e) {
     console.error(e);
     return res.status(400).json({ message: '오류가 발생하였습니다.' });

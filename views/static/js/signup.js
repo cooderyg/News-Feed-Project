@@ -8,6 +8,7 @@ signUpBtn.addEventListener('click', async () => {
   if (signUpBtn.classList.contains('active')) return;
 
   signUpBtn.classList.toggle('active');
+  signUpBtn.innerText = '로딩중입니다...';
   const api = await fetch('./api/users/signup', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -18,8 +19,8 @@ signUpBtn.addEventListener('click', async () => {
   alert(result.message);
 
   signUpBtn.classList.toggle('active');
-
-  if (result.message == '회원가입이 완료되었습니다.') return (window.location.href = './login');
+  signUpBtn.innerText = '회원가입';
+  if (result?.ok) return (window.location.href = './login');
 });
 
 class signupData {

@@ -141,7 +141,10 @@ h1 > a {
   gap: 12px;
 }
 .review .profile img {
-  width: 48px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 .review .profile div {
   color: #9d9d9d;
