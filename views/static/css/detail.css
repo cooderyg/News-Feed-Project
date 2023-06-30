@@ -72,6 +72,9 @@ h1 > a {
   right: 20px;
   color: #ff2e00;
 }
+.place .like i {
+  cursor: pointer;
+}
 .place > ul {
   color: #333;
 }
