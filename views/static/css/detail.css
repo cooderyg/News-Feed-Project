@@ -304,12 +304,19 @@ h1 > a {
 #modal .modal-content button.img-update-btn {
   position: absolute;
   top: -23px;
-  right: -64px;
+  right: -93px;
   font-size: 12px;
   width: 80px;
   height: 32px;
 }
-
+#modal .modal-content button.img-delete-btn {
+  position: absolute;
+  top: 16px;
+  right: -93px;
+  font-size: 12px;
+  width: 80px;
+  height: 32px;
+}
 .upload-input {
   display: none;
 }

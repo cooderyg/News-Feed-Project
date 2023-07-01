@@ -127,7 +127,7 @@ const detailpage = async () => {
   isCreated.length || !userId ? reviewWriteEl.classList.add('on') : null;
   console.log(isCreated);
   // 리뷰 넣기
-  const reviewTemp = data.Reviews.map((review) => {
+  const reviewTemp = data.Reviews.map((review, index) => {
     const reviewImgTemp = `<img class="review-img" src="${review.ReviewImages[0]?.imageUrl}" alt="" />`;
     return `
     <li data-id="${review.reviewId}">
@@ -139,7 +139,7 @@ const detailpage = async () => {
         <div class="label">
           <p>${review.createdAt.slice(0, 10)}</p>
           <p>${review.content}</p>
-          ${review.ReviewImages.length ? reviewImgTemp : ''}
+          ${review.ReviewImages[0]?.imageUrl ? reviewImgTemp : ''}
         </div>
         <div class="star">
           <div>${review.rating}</div>
@@ -156,17 +156,25 @@ const detailpage = async () => {
     const reviewId = e.target.parentNode.parentNode.parentNode.getAttribute('data-id');
     // 리뷰수정로직
     if (e.target.classList.contains('edit-btn')) {
-      // alert('수정버튼입니다.');
       const { content, rating } = isCreated[0];
       const imageUrl = isCreated[0].ReviewImages.length ? isCreated[0].ReviewImages[0].imageUrl : null;
       if (imageUrl) {
         uploadContainerEl.innerHTML = ` 
         <img src="${imageUrl}" />
         <button class="img-update-btn">이미지 수정</button>
+        <button class="img-delete-btn">이미지 삭제</button>
+        `;
+        const deleteTemp = `
+        <div class="upload"><i class="fa fa-plus-square-o" aria-hidden="true"></i></div>
         `;
         const imgUpdateBtnEl = document.querySelector('.img-update-btn');
+        const imgdeleteBtnEl = document.querySelector('.img-delete-btn');
         imgUpdateBtnEl.addEventListener('click', () => {
           uploadInputEl.click();
+        });
+        imgdeleteBtnEl.addEventListener('click', () => {
+          url = '삭제';
+          uploadContainerEl.innerHTML = deleteTemp;
         });
       }
       const starEls = ratingEl.querySelectorAll('.fa');
@@ -269,15 +277,25 @@ uploadInputEl.addEventListener('change', async (e) => {
     method: 'POST',
     body: formData,
   });
-  url = await response.json();
+  const data = await response.json();
+  url = data.data;
   console.log(url);
   uploadContainerEl.innerHTML = `
-  <img src="${url.data}" />
+  <img src="${url}" />
   <button class="img-update-btn">이미지 수정</button>
+  <button class="img-delete-btn">이미지 삭제</button>
   `;
+  const deleteTemp = `
+        <div class="upload"><i class="fa fa-plus-square-o" aria-hidden="true"></i></div>
+        `;
   const imgUpdateBtnEl = document.querySelector('.img-update-btn');
+  const imgdeleteBtnEl = document.querySelector('.img-delete-btn');
   imgUpdateBtnEl.addEventListener('click', () => {
     uploadInputEl.click();
+  });
+  imgdeleteBtnEl.addEventListener('click', () => {
+    url = '';
+    uploadContainerEl.innerHTML = deleteTemp;
   });
 });
 
@@ -286,8 +304,7 @@ reviewBtn.addEventListener('click', async () => {
   const rating = ratingEl.querySelectorAll('.fa-star').length;
   const form = JSON.stringify({
     content,
-    imageUrl: url ? url.data : null,
-    // imageUrl: 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/639648_1476361064493618.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80',
+    imageUrl: url ? url : null,
     rating,
   });
   if (reviewText.value.length < 10) {

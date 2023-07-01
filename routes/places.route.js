@@ -74,6 +74,7 @@ router.get('/:placeId', async (req, res) => {
         },
         {
           model: Reviews,
+
           include: [
             {
               model: Users,
@@ -86,6 +87,7 @@ router.get('/:placeId', async (req, res) => {
           ],
         },
       ],
+      order: [[{ model: Reviews }, 'createdAt', 'DESC']],
     });
     res.status(200).json({ place, userId });
   } catch (error) {

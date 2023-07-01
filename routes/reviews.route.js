@@ -93,7 +93,18 @@ router.put('/:reviewId', authMiddleware, async (req, res) => {
 
   // req.body에 imageUrl 있다면
   // 리뷰이미지테이블에 리뷰id where 조건 같은 이미지 찾고 url수정
-  if (imageUrl) {
+  if (imageUrl === '삭제') {
+    try {
+      await ReviewImages.update(
+        { imageUrl: '' },
+        {
+          where: { ReviewId: reviewId },
+        }
+      );
+    } catch (error) {
+      res.status(500).json({ message: error });
+    }
+  } else if (imageUrl) {
     try {
       const updateImg = await ReviewImages.update(
         { imageUrl },
