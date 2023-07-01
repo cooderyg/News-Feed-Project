@@ -10,7 +10,7 @@
     "password": {
       "string.base": "패스워드는 문자열이어야 합니다.",
       "any.required": "패스워드를 입력해 주세요.",
-      "string.pattern.base": "패스워드 형식이 올바르지 않습니다.",
+      "string.pattern.base": "패스워드는 최소 1가지 이상 영문, 숫자, 특수문자를 조합해 주세요.",
       "string.min": "패스워드는 최소 8자 이상 입력해 주세요.",
       "string.max": "패스워드는 최대 20자 이내로 입력해 주세요.",
       "string.empty": "패스워드를 입력해 주세요."
