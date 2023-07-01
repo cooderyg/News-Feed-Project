@@ -1,5 +1,5 @@
 /* common */
-* {
+body {
   font-family: 'Noto Sans KR', sans-serif;
 }
 a {
@@ -127,13 +127,17 @@ h1 > a {
   gap: 20px;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+}
+.feed-item {
+  width: calc(33.3% - 15px);
 }
 .feed-item .img-container {
+  width: 100%;
   position: relative;
 }
 .feed-item .img-container img {
-  width: 400px;
-  height: 300px;
+  width: 100%;
 }
 .feed-item .img-container i {
   cursor: pointer;
@@ -159,6 +163,12 @@ h1 > a {
 
 .searchBtn {
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .feed-item {
+    width: calc(50% - 20px);
+  }
 }
 /* footer */
 footer {

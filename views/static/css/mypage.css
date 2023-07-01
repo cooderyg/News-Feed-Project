@@ -1,10 +1,10 @@
 /* common */
 * {
-  font-family: 'Noto Sans KR', sans-serif;
   box-sizing: border-box;
 }
 
 body {
+  font-family: 'Noto Sans KR', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;

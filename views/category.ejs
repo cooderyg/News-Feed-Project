@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <style>
     /* common */
-    * {
+    body {
       font-family: 'Noto Sans KR', sans-serif;
       box-sizing: border-box;
     }
@@ -253,6 +253,12 @@
       color: #ff2e00;
       cursor: pointer;
     }
+    .top{
+      font-size: 20px;
+      font-weight: bold;
+      padding-bottom: 12px;
+      color: #ff2e00;
+    }
   </style>
 </head>
 
@@ -264,12 +270,13 @@
             <%= name %> 맛집 베스트 TOP 20
           </span></h1>
 
-        <% data.forEach((info)=> { %>
+        <% data.forEach((info, index)=> { %>
           <div class="courses-container" onclick="window.location.href='/detail/<%=info.placeId %>'">
             <div class="course">
               <img src="<%=info.imageUrl %>" class="course-preview">
               </img>
               <div class="course-info">
+                <div class="top">TOP<%= index+1 %></div>
                 <h6 style="font-size: 13px;">
                   <%= info.address %>
                 </h6>
