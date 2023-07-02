@@ -1,13 +1,51 @@
+<style>
+  /* header */
+  header {
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+  }
+
+  header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  h1>a {
+    display: block;
+    width: 257px;
+    height: 53px;
+    background: no-repeat url('/img/logo.png');
+  }
+
+  .login {
+    color: #ff2e00;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .mypagebtn {
+    color: #ff2e00;
+    font-weight: bold;
+    text-decoration: none;
+  }
+</style>
+
 <header>
   <div class="wrap">
     <h1><a href="/"></a></h1>
     <div style="display: flex">
       <% if(login==1) { %>
-      <a class="login" style="margin-right: 20px" href="/mypage"> 내 정보 </a>
-      <a class="login" href="/api/users/signout">로그아웃</a>
-      <% } else { %>
-      <a class="login" href="/login">로그인</a>
-      <% } %>
+        <a class="mypagebtn" style="margin-right: 20px" href="/mypage"> 내 정보 </a>
+        <a class="login" href="/api/users/signout">로그아웃</a>
+        <% } else { %>
+          <a class="login" href="/login">로그인</a>
+          <% } %>
     </div>
   </div>
 </header>

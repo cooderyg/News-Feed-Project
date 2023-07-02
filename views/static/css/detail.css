@@ -12,32 +12,6 @@ a {
   padding: 0 20px;
   max-width: 1400px;
 }
-
-/* header */
-header {
-  z-index: 99;
-  position: fixed;
-  top: 0;
-  padding: 10px 0;
-  width: 100%;
-  background-color: #fff;
-  border-bottom: 1px solid #ccc;
-}
-header .wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-h1 > a {
-  display: block;
-  width: 257px;
-  height: 53px;
-  background: no-repeat url('/img/logo.png');
-}
-.login {
-  color: #ff2e00;
-  text-decoration: none;
-}
 /* Thumbnail */
 .thumbnail {
   max-width: 800px;
