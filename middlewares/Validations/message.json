@@ -40,7 +40,8 @@
       "string.pattern.base": "새로운 패스워드 형식이 올바르지 않습니다.",
       "string.min": "새로운 패스워드는 최소 8자 이상 입력해 주세요.",
       "string.max": "새로운 패스워드는 최대 20자 이내로 입력해 주세요.",
-      "string.empty": "새로운 패스워드를 입력해 주세요."
+      "string.empty": "새로운 패스워드를 입력해 주세요.",
+      "any.invalid": "새로운 패스워드와 기존 패스워드는 동일할 수 없습니다."
     },
     "editConfirmPassword": {
       "string.base": "새로운 확인 패스워드는 문자열이어야 합니다.",

@@ -76,6 +76,7 @@ const userValidation = {
         .max(20)
         .regex(/^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])/)
         .required()
+        .disallow(Joi.ref('currentPassword'))
         .messages(user.editPassword),
       editConfirmPassword: Joi.string().valid(Joi.ref('editPassword')).required().messages(user.editConfirmPassword),
     });
@@ -83,6 +84,7 @@ const userValidation = {
     try {
       await schema.validateAsync(body);
     } catch (err) {
+      console.log(err);
       return res.status(412).json({ message: err.message });
     }
 
