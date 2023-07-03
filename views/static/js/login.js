@@ -5,7 +5,13 @@ const loginBtn = document.getElementById('loginBtn');
 const url = new URL(window.location);
 const urlParams = url.searchParams;
 
+userPassword.addEventListener('keydown', (e) => {
+  if (e.keyCode === 13) loginBtn.click();
+});
+
 loginBtn.addEventListener('click', async () => {
+  if (!userEmail.value || !userPassword.value) return alert('아이디와 패스워드 모두 입력해주세요!');
+
   const api = await fetch('./api/users/signin', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
